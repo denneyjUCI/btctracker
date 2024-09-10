@@ -1,0 +1,32 @@
+{
+  "configurations" : [
+    {
+      "id" : "AEC31911-5A0E-4E8E-A9BF-05C204D90F91",
+      "name" : "Test Scheme Action",
+      "options" : {
+        "addressSanitizer" : {
+          "enabled" : false
+        }
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "addressSanitizer" : {
+      "detectStackUseAfterReturn" : true,
+      "enabled" : true
+    },
+    "codeCoverage" : false,
+    "testExecutionOrdering" : "random",
+    "threadSanitizerEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:BTCTracker.xcodeproj",
+        "identifier" : "EADC43562C90BFE1004414F0",
+        "name" : "BTCTrackerTests"
+      }
+    }
+  ],
+  "version" : 1
+}

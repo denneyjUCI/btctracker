@@ -29,6 +29,7 @@
 		EADC43572C90BFE1004414F0 /* BTCTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BTCTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EADC435C2C90BFE1004414F0 /* BTCTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTCTrackerTests.swift; sourceTree = "<group>"; };
 		EADC43672C90C733004414F0 /* Exchange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exchange.swift; sourceTree = "<group>"; };
+		EADC43692C90C859004414F0 /* CI.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = CI.xctestplan; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +54,7 @@
 		EADC43452C90BFE0004414F0 = {
 			isa = PBXGroup;
 			children = (
+				EADC43692C90C859004414F0 /* CI.xctestplan */,
 				EADC43512C90BFE0004414F0 /* BTCTracker */,
 				EADC435B2C90BFE1004414F0 /* BTCTrackerTests */,
 				EADC43502C90BFE0004414F0 /* Products */,
