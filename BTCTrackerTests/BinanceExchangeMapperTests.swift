@@ -25,4 +25,10 @@ final class BinanceExchangeMapperTests: XCTestCase {
         XCTAssertThrowsError(try BinanceExchangeMapper.map(data))
     }
 
+    func test_map_withMalformedJSON_throwsError() {
+        let data = Data("{ \"ticker\": \"BTCUSDT\" }".utf8)
+
+        XCTAssertThrowsError(try BinanceExchangeMapper.map(data))
+    }
+
 }
