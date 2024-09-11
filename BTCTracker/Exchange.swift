@@ -7,7 +7,12 @@
 
 import Foundation
 
-struct Exchange {
-    let symbol: String
-    let rate: Double
+public struct Exchange {
+    public let symbol: String
+    public let rate: Double
+
+    public init(symbol: String, rate: Double) {
+        self.symbol = symbol
+        self.rate = rate
+    }
 }

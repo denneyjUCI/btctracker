@@ -6,6 +6,7 @@
 //
 
 import XCTest
+import BTCTracker
 
 final class BinanceExchangeMapper {
     public enum Error: Swift.Error {
@@ -14,15 +15,29 @@ final class BinanceExchangeMapper {
         case rateLimit
     }
 
-    static func map(_ data: Data, from response: HTTPURLResponse) throws {
+    static func map(_ data: Data, from response: HTTPURLResponse) throws -> Exchange {
         if response.statusCode == 429 {
             throw Error .rateLimit
         }
-        
+
         if [400, 403, 409, 418].contains(response.statusCode) {
             throw Error.badRequest
         }
-        throw Error.invalidData
+
+        guard let mapped = try? JSONDecoder().decode(Root.self, from: data) else {
+            throw Error.invalidData
+        }
+
+        return mapped.exchange
+    }
+
+    private struct Root: Decodable {
+        let symbol: String
+        let price: Double
+
+        var exchange: Exchange {
+            Exchange(symbol: symbol, rate: price)
+        }
     }
 }
 
@@ -66,6 +81,20 @@ final class BinanceExchangeMapperTests: XCTestCase {
             XCTAssertEqual(error, BinanceExchangeMapper.Error.rateLimit)
         default:
             XCTFail("Expected bad request error, got \(result) instead")
+        }
+    }
+
+    func test_map_with200ResponseCodeAndValidData_throwsBadRequestError() {
+        let data = Data("{ \"symbol\": \"BTCUSDT\", \"price\": 200.0 }".utf8)
+
+        let result = Result { try BinanceExchangeMapper.map(data, from: anyHTTPURLResponse()) }
+
+        switch result {
+        case .success(let mapped):
+            XCTAssertEqual(mapped.symbol, "BTCUSDT")
+            XCTAssertEqual(mapped.rate, 200.0)
+        default:
+            XCTFail("Expected success, got \(result) instead")
         }
     }
 
