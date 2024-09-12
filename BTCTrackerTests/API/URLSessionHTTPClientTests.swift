@@ -50,8 +50,7 @@ final class URLSessionHTTPClientTests: XCTestCase {
         let values = resultValuesFor(data: data, response: response, error: nil)
 
         XCTAssertEqual(values?.data, data)
-        XCTAssertEqual(values?.response.url, response.url)
-        XCTAssertEqual(values?.response.statusCode, response.statusCode)
+        assertResponsesEqual(values?.response, response)
     }
 
     func test_getRequest_succeedsWithEmptyDataOnHTTPURLResponseWithNilData() {
@@ -61,11 +60,15 @@ final class URLSessionHTTPClientTests: XCTestCase {
         let values = resultValuesFor(data: nil, response: response, error: nil)
 
         XCTAssertEqual(values?.data, emptyData)
-        XCTAssertEqual(values?.response.url, response.url)
-        XCTAssertEqual(values?.response.statusCode, response.statusCode)
+        assertResponsesEqual(values?.response, response)
     }
 
     // MARK: - Helpers
+    private func assertResponsesEqual(_ lhs: HTTPURLResponse?, _ rhs: HTTPURLResponse, file: StaticString = #filePath, line: UInt = #line) {
+        XCTAssertEqual(lhs?.url, rhs.url, file: file, line: line)
+        XCTAssertEqual(lhs?.statusCode, rhs.statusCode, file: file, line: line)
+    }
+
     private func resultErrorFor(data: Data?, response: URLResponse?, error: Error? = nil, file: StaticString = #filePath, line: UInt = #line) -> Error? {
         let result = resultFor(data: data, response: response, error: error)
         switch result {
