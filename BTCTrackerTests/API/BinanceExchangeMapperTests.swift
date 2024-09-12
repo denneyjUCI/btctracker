@@ -17,55 +17,43 @@ final class BinanceExchangeMapperTests: XCTestCase {
     }
 
     func test_map_withMalformedJSON_throwsError() {
-        let data = Data("{ \"ticker\": \"BTCUSDT\" }".utf8)
+        let data = try! JSONSerialization.data(withJSONObject: [ "ticker": 200.0 ])
 
         XCTAssertThrowsError(try BinanceExchangeMapper.map(data, from: anyHTTPURLResponse()))
     }
 
-    func test_map_with4xxResponseCodeAndValidData_throwsBadRequestError() {
-        let data = Data("{ \"symbol\": \"BTCUSDT\", \"price\": 200.0 }".utf8)
+    func test_map_with4xxResponseCodeAndValidData_throwsBadRequestError()throws  {
+        let data = makeExchangeJSON().data
 
         let samples = [400, 403, 409, 418]
-        samples.forEach { code in
-            let result = Result { try BinanceExchangeMapper.map(data, from: anyHTTPURLResponse(code: code)) }
-
-            switch result {
-            case .failure(let error as BinanceExchangeMapper.Error):
-                XCTAssertEqual(error, BinanceExchangeMapper.Error.badRequest)
-            default:
-                XCTFail("Expected bad request error, got \(result) instead")
+        try samples.forEach { code in
+            XCTAssertThrowsError(try BinanceExchangeMapper.map(data, from: anyHTTPURLResponse(code: code))) { error in
+                XCTAssertEqual(error as? BinanceExchangeMapper.Error, BinanceExchangeMapper.Error.badRequest)
             }
         }
     }
 
     func test_map_with429ResponseCodeAndValidData_throwsBadRequestError() {
-        let data = Data("{ \"symbol\": \"BTCUSDT\", \"price\": 200.0 }".utf8)
-
-        let result = Result { try BinanceExchangeMapper.map(data, from: anyHTTPURLResponse(code: 429)) }
-
-        switch result {
-        case .failure(let error as BinanceExchangeMapper.Error):
-            XCTAssertEqual(error, BinanceExchangeMapper.Error.rateLimit)
-        default:
-            XCTFail("Expected bad request error, got \(result) instead")
+        XCTAssertThrowsError(try BinanceExchangeMapper.map(makeExchangeJSON().data, from: anyHTTPURLResponse(code: 429))) { error in
+            XCTAssertEqual(error as? BinanceExchangeMapper.Error, BinanceExchangeMapper.Error.rateLimit)
         }
     }
 
-    func test_map_with200ResponseCodeAndValidData_throwsBadRequestError() {
-        let data = Data("{ \"symbol\": \"BTCUSDT\", \"price\": 200.0 }".utf8)
+    func test_map_with200ResponseCodeAndValidData_throwsBadRequestError() throws {
+        let json = makeExchangeJSON()
 
-        let result = Result { try BinanceExchangeMapper.map(data, from: anyHTTPURLResponse()) }
+        let result = try BinanceExchangeMapper.map(json.data, from: anyHTTPURLResponse())
 
-        switch result {
-        case .success(let mapped):
-            XCTAssertEqual(mapped.symbol, "BTCUSDT")
-            XCTAssertEqual(mapped.rate, 200.0)
-        default:
-            XCTFail("Expected success, got \(result) instead")
-        }
+        XCTAssertEqual(result, json.model)
     }
 
     // MARK: - Helpers
+    private func makeExchangeJSON(_ symbol: String = "BTCUSDT", _ price: Double = 200.0) -> (model: Exchange, data: Data) {
+        let item = Exchange(symbol: symbol, rate: price)
+        let jsonData: [String: Any] = [ "symbol": symbol, "price": price ]
+        return (item, try! JSONSerialization.data(withJSONObject: jsonData))
+    }
+
     private func anyHTTPURLResponse(code: Int = 200) -> HTTPURLResponse {
         let url = URL(string: "http://any-url.com")!
         return HTTPURLResponse(url: url, statusCode: code, httpVersion: nil, headerFields: nil)!

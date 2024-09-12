@@ -23,30 +23,31 @@ final class CryptoCompareExchangeMapperTests: XCTestCase {
     }
 
     func test_map_withNon200ResponseCodeAndValidData_throwsError() throws {
-        let data = Data("{ \"RAW\" : { \"FROMSYMBOL\": \"BTC\", \"TOSYMBOL\": \"USDT\", \"PRICE\": 200.0 } }".utf8)
-
         let samples = [199, 201, 250, 299, 300, 400, 500]
         try samples.forEach { code in
-            XCTAssertThrowsError(try CryptoCompareExchangeMapper.map(data, from: anyHTTPURLResponse(code: code)))
+            XCTAssertThrowsError(try CryptoCompareExchangeMapper.map(makeExchangeJSON().data, from: anyHTTPURLResponse(code: code))) { error in
+                XCTAssertEqual(error as? CryptoCompareExchangeMapper.Error, .badRequest)
+            }
         }
     }
 
-    func test_map_with200ResponseCodeAndValidData_throwsBadRequestError() {
-        let data = Data("{ \"RAW\" : { \"FROMSYMBOL\": \"BTC\", \"TOSYMBOL\": \"USDT\", \"PRICE\": 200.0 } }".utf8)
+    func test_map_with200ResponseCodeAndValidData_deliversMappedValue() throws {
+        let json = makeExchangeJSON()
 
-        let result = Result { try CryptoCompareExchangeMapper.map(data, from: anyHTTPURLResponse()) }
+        let result = try CryptoCompareExchangeMapper.map(json.data, from: anyHTTPURLResponse(code: 200))
 
-        switch result {
-        case .success(let mapped):
-            XCTAssertEqual(mapped.symbol, "BTCUSDT")
-            XCTAssertEqual(mapped.rate, 200.0)
-        default:
-            XCTFail("Expected success, got \(result) instead")
-        }
+        XCTAssertEqual(result, json.model)
     }
 
     // MARK: - Helpers
-    private func anyHTTPURLResponse(code: Int = 200) -> HTTPURLResponse {
+    private func makeExchangeJSON(_ from: String = "BTC", _ to: String = "USDT", _ price: Double = 200.0) -> (model: Exchange, data: Data) {
+        let item = Exchange(symbol: from + to, rate: price)
+        let raw: [String: Any] = [ "FROMSYMBOL": from, "TOSYMBOL": to, "PRICE": price ]
+        let jsonData: [String : Any] = [ "RAW": raw ]
+        return (item, try! JSONSerialization.data(withJSONObject: jsonData))
+    }
+
+    private func anyHTTPURLResponse(code: Int = 500) -> HTTPURLResponse {
         let url = URL(string: "http://any-url.com")!
         return HTTPURLResponse(url: url, statusCode: code, httpVersion: nil, headerFields: nil)!
     }
