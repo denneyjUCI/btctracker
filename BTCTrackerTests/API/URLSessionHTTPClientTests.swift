@@ -42,34 +42,33 @@ final class URLSessionHTTPClientTests: XCTestCase {
     }
 
     func test_getRequest_failsOnRequestError() {
-        let exp = expectation(description: "wait for request")
         let requestError = NSError(domain: "any error", code: -1)
-        URLProtocolStub.stub(data: nil, response: nil, error: requestError)
+        let receivedError = resultErrorFor(data: nil, response: nil, error: requestError) as? NSError
 
-        makeSUT().get(request: anyURLRequest()) { error in
-            let nsError = error as? NSError
-            XCTAssertEqual(nsError?.domain, requestError.domain)
-            XCTAssertEqual(nsError?.code, requestError.code)
-            exp.fulfill()
-        }
-
-        wait(for: [exp], timeout: 1)
+        XCTAssertEqual(receivedError?.domain, requestError.domain)
+        XCTAssertEqual(receivedError?.code, requestError.code)
     }
 
     func test_getRequest_failsOnAllNilValues() {
-        let exp = expectation(description: "wait for request")
-        URLProtocolStub.stub(data: nil, response: nil, error: nil)
-
-        makeSUT().get(request: anyURLRequest()) { error in
-            XCTAssertNotNil(error)
-            exp.fulfill()
-        }
-
-        wait(for: [exp], timeout: 1)
+        XCTAssertNotNil(resultErrorFor(data: nil, response: nil, error: nil))
     }
 
 
     // MARK: - Helpers
+    private func resultErrorFor(data: Data?, response: URLResponse?, error: Error? = nil) -> Error? {
+        let exp = expectation(description: "wait for request")
+        URLProtocolStub.stub(data: data, response: response, error: error)
+
+        var capturedError: Error?
+        makeSUT().get(request: anyURLRequest()) { error in
+            capturedError = error
+            exp.fulfill()
+        }
+
+        wait(for: [exp], timeout: 1)
+        return capturedError
+    }
+
     private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> URLSessionHTTPClient {
         let configuration = URLSessionConfiguration.ephemeral
         configuration.protocolClasses = [URLProtocolStub.self]
