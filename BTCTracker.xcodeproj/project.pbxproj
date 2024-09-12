@@ -69,9 +69,8 @@
 			isa = PBXGroup;
 			children = (
 				EA5875DD2C933ECF00CD1C34 /* Helpers.swift */,
-				EA5875D32C92824600CD1C34 /* CryptoCompareExchangeMapperTests.swift */,
-				EADC436A2C90CC44004414F0 /* BinanceExchangeMapperTests.swift */,
-				EA5875F22C93717E00CD1C34 /* URLSessionHTTPClientTests.swift */,
+				EA5875F72C93A19200CD1C34 /* Infra */,
+				EA5875F82C93A19900CD1C34 /* Mapping */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -87,10 +86,9 @@
 		EA5875D22C92823000CD1C34 /* API */ = {
 			isa = PBXGroup;
 			children = (
-				EA5875F42C93A0A100CD1C34 /* Infra */,
 				EA5875D72C9287B500CD1C34 /* HTTPClient.swift */,
-				EA5875D52C92829700CD1C34 /* CryptoCompareExchangeMapper.swift */,
-				EA5875CE2C9281E900CD1C34 /* BinanceExchangeMapper.swift */,
+				EA5875F42C93A0A100CD1C34 /* Infra */,
+				EA5875F92C93A1EF00CD1C34 /* Mapping */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -101,6 +99,32 @@
 				EA5875F52C93A0B300CD1C34 /* URLSessionHTTPClient.swift */,
 			);
 			path = Infra;
+			sourceTree = "<group>";
+		};
+		EA5875F72C93A19200CD1C34 /* Infra */ = {
+			isa = PBXGroup;
+			children = (
+				EA5875F22C93717E00CD1C34 /* URLSessionHTTPClientTests.swift */,
+			);
+			path = Infra;
+			sourceTree = "<group>";
+		};
+		EA5875F82C93A19900CD1C34 /* Mapping */ = {
+			isa = PBXGroup;
+			children = (
+				EA5875D32C92824600CD1C34 /* CryptoCompareExchangeMapperTests.swift */,
+				EADC436A2C90CC44004414F0 /* BinanceExchangeMapperTests.swift */,
+			);
+			path = Mapping;
+			sourceTree = "<group>";
+		};
+		EA5875F92C93A1EF00CD1C34 /* Mapping */ = {
+			isa = PBXGroup;
+			children = (
+				EA5875D52C92829700CD1C34 /* CryptoCompareExchangeMapper.swift */,
+				EA5875CE2C9281E900CD1C34 /* BinanceExchangeMapper.swift */,
+			);
+			path = Mapping;
 			sourceTree = "<group>";
 		};
 		EADC43452C90BFE0004414F0 = {
