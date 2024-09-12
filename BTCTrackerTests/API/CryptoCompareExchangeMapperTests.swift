@@ -22,37 +22,17 @@ final class CryptoCompareExchangeMapperTests: XCTestCase {
         XCTAssertThrowsError(try CryptoCompareExchangeMapper.map(data, from: anyHTTPURLResponse()))
     }
 
-    func test_map_with4xxResponseCodeAndValidData_throwsBadRequestError() {
-        let data = Data("{ \"symbol\": \"BTCUSDT\", \"price\": 200.0 }".utf8)
+    func test_map_withNon200ResponseCodeAndValidData_throwsError() throws {
+        let data = Data("{ \"RAW\" : { \"FROMSYMBOL\": \"BTC\", \"TOSYMBOL\": \"USDT\", \"PRICE\": 200.0 } }".utf8)
 
-        let samples = [400, 403, 409, 418]
-        samples.forEach { code in
-            let result = Result { try CryptoCompareExchangeMapper.map(data, from: anyHTTPURLResponse(code: code)) }
-
-            switch result {
-            case .failure(let error as CryptoCompareExchangeMapper.Error):
-                XCTAssertEqual(error, CryptoCompareExchangeMapper.Error.badRequest)
-            default:
-                XCTFail("Expected bad request error, got \(result) instead")
-            }
-        }
-    }
-
-    func test_map_with429ResponseCodeAndValidData_throwsBadRequestError() {
-        let data = Data("{ \"symbol\": \"BTCUSDT\", \"price\": 200.0 }".utf8)
-
-        let result = Result { try CryptoCompareExchangeMapper.map(data, from: anyHTTPURLResponse(code: 429)) }
-
-        switch result {
-        case .failure(let error as CryptoCompareExchangeMapper.Error):
-            XCTAssertEqual(error, CryptoCompareExchangeMapper.Error.rateLimit)
-        default:
-            XCTFail("Expected bad request error, got \(result) instead")
+        let samples = [199, 201, 250, 299, 300, 400, 500]
+        try samples.forEach { code in
+            XCTAssertThrowsError(try CryptoCompareExchangeMapper.map(data, from: anyHTTPURLResponse(code: code)))
         }
     }
 
     func test_map_with200ResponseCodeAndValidData_throwsBadRequestError() {
-        let data = Data("{ \"symbol\": \"BTCUSDT\", \"price\": 200.0 }".utf8)
+        let data = Data("{ \"RAW\" : { \"FROMSYMBOL\": \"BTC\", \"TOSYMBOL\": \"USDT\", \"PRICE\": 200.0 } }".utf8)
 
         let result = Result { try CryptoCompareExchangeMapper.map(data, from: anyHTTPURLResponse()) }
 

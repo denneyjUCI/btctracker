@@ -19,7 +19,7 @@ public final class CryptoCompareExchangeMapper {
             throw Error .rateLimit
         }
 
-        if [400, 403, 409, 418].contains(response.statusCode) {
+        if response.statusCode != 200 {
             throw Error.badRequest
         }
 
@@ -31,11 +31,16 @@ public final class CryptoCompareExchangeMapper {
     }
 
     private struct Root: Decodable {
-        let symbol: String
-        let price: Double
+        private let RAW: Raw
+
+        private struct Raw: Decodable {
+            let FROMSYMBOL: String
+            let TOSYMBOL: String
+            let PRICE: Double
+        }
 
         var exchange: Exchange {
-            Exchange(symbol: symbol, rate: price)
+            Exchange(symbol: RAW.FROMSYMBOL+RAW.TOSYMBOL, rate: RAW.PRICE)
         }
     }
 }
