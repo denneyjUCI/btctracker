@@ -9,7 +9,7 @@ final class URLSessionHTTPClient {
 
     private struct UnexpectedValuesRepresentation: Error {}
 
-    func get(request: URLRequest, completion: @escaping (HTTPClient.Result) -> Void = { _ in }) {
+    func get(request: URLRequest, completion: @escaping (HTTPClient.Result) -> Void) {
         session.dataTask(with: request, completionHandler: { data, response, error in
             if let error = error {
                 completion(.failure(error))
@@ -39,7 +39,7 @@ final class URLSessionHTTPClientTests: XCTestCase {
             exp.fulfill()
         }
 
-        makeSUT().get(request: request)
+        makeSUT().get(request: request) { _ in }
 
         wait(for: [exp], timeout: 1)
     }
