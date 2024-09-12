@@ -19,10 +19,6 @@ final class URLSessionHTTPClientTests: XCTestCase {
     }
 
     func test_getRequest_performsGETRequestWithProvidedRequest() throws {
-        let configuration = URLSessionConfiguration.ephemeral
-        configuration.protocolClasses = [URLProtocolStub.self]
-        let session = URLSession(configuration: configuration)
-        let sut = URLSessionHTTPClient(session: session)
         let request = URLRequest(url: URL(string: "http://any-url.com")!)
         let exp = expectation(description: "wait for request")
         URLProtocolStub.observeRequests { req in
@@ -31,12 +27,19 @@ final class URLSessionHTTPClientTests: XCTestCase {
             exp.fulfill()
         }
 
-        sut.get(request: request)
+        makeSUT().get(request: request)
 
         wait(for: [exp], timeout: 1)
     }
 
     // MARK: - Helpers
+    private func makeSUT() -> URLSessionHTTPClient {
+        let configuration = URLSessionConfiguration.ephemeral
+        configuration.protocolClasses = [URLProtocolStub.self]
+        let session = URLSession(configuration: configuration)
+        return URLSessionHTTPClient(session: session)
+    }
+
     private class URLProtocolStub: URLProtocol {
         private struct Stub {
             let data: Data?
