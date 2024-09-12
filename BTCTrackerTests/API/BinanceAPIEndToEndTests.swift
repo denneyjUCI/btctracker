@@ -30,9 +30,10 @@ final class BinanceAPIEndToEndTests: XCTestCase {
     }
 
     // MARK: - Helpers
-    private func loadResult(from url: URL) -> HTTPClient.Result {
+    private func loadResult(from url: URL, file: StaticString = #filePath, line: UInt = #line) -> HTTPClient.Result {
         let session = URLSession(configuration: .ephemeral)
         let client = URLSessionHTTPClient(session: session)
+        trackForMemoryLeaks(client, file: file, line: line)
         let exp = expectation(description: "Wait for load")
 
         var capturedResult: HTTPClient.Result!
@@ -43,6 +44,12 @@ final class BinanceAPIEndToEndTests: XCTestCase {
 
         wait(for: [exp], timeout: 10)
         return capturedResult
+    }
+
+    private func trackForMemoryLeaks(_ object: AnyObject, file: StaticString = #filePath, line: UInt = #line) {
+        addTeardownBlock { [weak object] in
+            XCTAssertNil(object, "Object should have been deallocated, possible memory leak!", file: file, line: line)
+        }
     }
 
 }
