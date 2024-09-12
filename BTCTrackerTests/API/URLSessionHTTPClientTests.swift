@@ -5,9 +5,16 @@ final class URLSessionHTTPClient {
     init(session: URLSession) {
         self.session = session
     }
+
+    private struct UnexpectedValuesRepresentation: Error {}
+
     func get(request: URLRequest, completion: @escaping (Error?) -> Void = { _ in }) {
         session.dataTask(with: request, completionHandler: { _, _, error in
-            completion(error)
+            if let error = error {
+                completion(error)
+            } else {
+                completion(UnexpectedValuesRepresentation())
+            }
         }).resume()
     }
 }
@@ -43,6 +50,18 @@ final class URLSessionHTTPClientTests: XCTestCase {
             let nsError = error as? NSError
             XCTAssertEqual(nsError?.domain, requestError.domain)
             XCTAssertEqual(nsError?.code, requestError.code)
+            exp.fulfill()
+        }
+
+        wait(for: [exp], timeout: 1)
+    }
+
+    func test_getRequest_failsOnAllNilValues() {
+        let exp = expectation(description: "wait for request")
+        URLProtocolStub.stub(data: nil, response: nil, error: nil)
+
+        makeSUT().get(request: anyURLRequest()) { error in
+            XCTAssertNotNil(error)
             exp.fulfill()
         }
 
