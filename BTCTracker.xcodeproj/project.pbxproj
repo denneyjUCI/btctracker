@@ -14,7 +14,8 @@
 		EA5875DE2C933ECF00CD1C34 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5875DD2C933ECF00CD1C34 /* Helpers.swift */; };
 		EA5875F32C93717E00CD1C34 /* URLSessionHTTPClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5875F22C93717E00CD1C34 /* URLSessionHTTPClientTests.swift */; };
 		EA5875F62C93A0B300CD1C34 /* URLSessionHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5875F52C93A0B300CD1C34 /* URLSessionHTTPClient.swift */; };
-		EA5875FB2C93A26100CD1C34 /* BinanceAPIEndToEndTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5875FA2C93A26100CD1C34 /* BinanceAPIEndToEndTests.swift */; };
+		EA5876042C93A77500CD1C34 /* BTCTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EADC434F2C90BFE0004414F0 /* BTCTracker.framework */; };
+		EA58760A2C93A77E00CD1C34 /* BinanceAPIEndToEndTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5875FA2C93A26100CD1C34 /* BinanceAPIEndToEndTests.swift */; };
 		EADC43582C90BFE1004414F0 /* BTCTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EADC434F2C90BFE0004414F0 /* BTCTracker.framework */; };
 		EADC435E2C90BFE1004414F0 /* BTCTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = EADC43522C90BFE0004414F0 /* BTCTracker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EADC43682C90C733004414F0 /* Exchange.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADC43672C90C733004414F0 /* Exchange.swift */; };
@@ -22,6 +23,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		EA5876052C93A77500CD1C34 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EADC43462C90BFE0004414F0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EADC434E2C90BFE0004414F0;
+			remoteInfo = BTCTracker;
+		};
 		EADC43592C90BFE1004414F0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = EADC43462C90BFE0004414F0 /* Project object */;
@@ -40,6 +48,7 @@
 		EA5875F22C93717E00CD1C34 /* URLSessionHTTPClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClientTests.swift; sourceTree = "<group>"; };
 		EA5875F52C93A0B300CD1C34 /* URLSessionHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClient.swift; sourceTree = "<group>"; };
 		EA5875FA2C93A26100CD1C34 /* BinanceAPIEndToEndTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinanceAPIEndToEndTests.swift; sourceTree = "<group>"; };
+		EA5876002C93A77500CD1C34 /* BTCTrackerAPIEndToEndTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BTCTrackerAPIEndToEndTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EADC434F2C90BFE0004414F0 /* BTCTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BTCTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EADC43522C90BFE0004414F0 /* BTCTracker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTCTracker.h; sourceTree = "<group>"; };
 		EADC43572C90BFE1004414F0 /* BTCTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BTCTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,6 +58,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		EA5875FD2C93A77500CD1C34 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EA5876042C93A77500CD1C34 /* BTCTracker.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EADC434C2C90BFE0004414F0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -73,7 +90,6 @@
 				EA5875DD2C933ECF00CD1C34 /* Helpers.swift */,
 				EA5875F72C93A19200CD1C34 /* Infra */,
 				EA5875F82C93A19900CD1C34 /* Mapping */,
-				EA5875FA2C93A26100CD1C34 /* BinanceAPIEndToEndTests.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -130,12 +146,21 @@
 			path = Mapping;
 			sourceTree = "<group>";
 		};
+		EA5876012C93A77500CD1C34 /* BTCTrackerAPIEndToEndTests */ = {
+			isa = PBXGroup;
+			children = (
+				EA5875FA2C93A26100CD1C34 /* BinanceAPIEndToEndTests.swift */,
+			);
+			path = BTCTrackerAPIEndToEndTests;
+			sourceTree = "<group>";
+		};
 		EADC43452C90BFE0004414F0 = {
 			isa = PBXGroup;
 			children = (
 				EADC43692C90C859004414F0 /* CI.xctestplan */,
 				EADC43512C90BFE0004414F0 /* BTCTracker */,
 				EADC435B2C90BFE1004414F0 /* BTCTrackerTests */,
+				EA5876012C93A77500CD1C34 /* BTCTrackerAPIEndToEndTests */,
 				EADC43502C90BFE0004414F0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -145,6 +170,7 @@
 			children = (
 				EADC434F2C90BFE0004414F0 /* BTCTracker.framework */,
 				EADC43572C90BFE1004414F0 /* BTCTrackerTests.xctest */,
+				EA5876002C93A77500CD1C34 /* BTCTrackerAPIEndToEndTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -181,6 +207,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		EA5875FF2C93A77500CD1C34 /* BTCTrackerAPIEndToEndTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EA5876072C93A77500CD1C34 /* Build configuration list for PBXNativeTarget "BTCTrackerAPIEndToEndTests" */;
+			buildPhases = (
+				EA5875FC2C93A77500CD1C34 /* Sources */,
+				EA5875FD2C93A77500CD1C34 /* Frameworks */,
+				EA5875FE2C93A77500CD1C34 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EA5876062C93A77500CD1C34 /* PBXTargetDependency */,
+			);
+			name = BTCTrackerAPIEndToEndTests;
+			productName = BTCTrackerAPIEndToEndTests;
+			productReference = EA5876002C93A77500CD1C34 /* BTCTrackerAPIEndToEndTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		EADC434E2C90BFE0004414F0 /* BTCTracker */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = EADC43612C90BFE1004414F0 /* Build configuration list for PBXNativeTarget "BTCTracker" */;
@@ -227,6 +271,9 @@
 				LastSwiftUpdateCheck = 1540;
 				LastUpgradeCheck = 1540;
 				TargetAttributes = {
+					EA5875FF2C93A77500CD1C34 = {
+						CreatedOnToolsVersion = 15.4;
+					};
 					EADC434E2C90BFE0004414F0 = {
 						CreatedOnToolsVersion = 15.4;
 						LastSwiftMigration = 1540;
@@ -252,11 +299,19 @@
 			targets = (
 				EADC434E2C90BFE0004414F0 /* BTCTracker */,
 				EADC43562C90BFE1004414F0 /* BTCTrackerTests */,
+				EA5875FF2C93A77500CD1C34 /* BTCTrackerAPIEndToEndTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		EA5875FE2C93A77500CD1C34 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EADC434D2C90BFE0004414F0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -274,6 +329,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		EA5875FC2C93A77500CD1C34 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EA58760A2C93A77E00CD1C34 /* BinanceAPIEndToEndTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EADC434B2C90BFE0004414F0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -290,7 +353,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA5875FB2C93A26100CD1C34 /* BinanceAPIEndToEndTests.swift in Sources */,
 				EA5875D42C92824600CD1C34 /* CryptoCompareExchangeMapperTests.swift in Sources */,
 				EA5875DE2C933ECF00CD1C34 /* Helpers.swift in Sources */,
 				EADC436B2C90CC44004414F0 /* BinanceExchangeMapperTests.swift in Sources */,
@@ -301,6 +363,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		EA5876062C93A77500CD1C34 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EADC434E2C90BFE0004414F0 /* BTCTracker */;
+			targetProxy = EA5876052C93A77500CD1C34 /* PBXContainerItemProxy */;
+		};
 		EADC435A2C90BFE1004414F0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = EADC434E2C90BFE0004414F0 /* BTCTracker */;
@@ -309,6 +376,34 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		EA5876082C93A77500CD1C34 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.distiil.BTCTrackerAPIEndToEndTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		EA5876092C93A77500CD1C34 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.distiil.BTCTrackerAPIEndToEndTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		EADC435F2C90BFE1004414F0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -540,6 +635,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		EA5876072C93A77500CD1C34 /* Build configuration list for PBXNativeTarget "BTCTrackerAPIEndToEndTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EA5876082C93A77500CD1C34 /* Debug */,
+				EA5876092C93A77500CD1C34 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		EADC43492C90BFE0004414F0 /* Build configuration list for PBXProject "BTCTracker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
