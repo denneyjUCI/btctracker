@@ -53,6 +53,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EA5875D02C92822300CD1C34 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				EADC436A2C90CC44004414F0 /* BinanceExchangeMapperTests.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		EA5875D12C92822900CD1C34 /* Feature */ = {
+			isa = PBXGroup;
+			children = (
+				EADC43672C90C733004414F0 /* Exchange.swift */,
+			);
+			path = Feature;
+			sourceTree = "<group>";
+		};
+		EA5875D22C92823000CD1C34 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				EA5875CE2C9281E900CD1C34 /* BinanceExchangeMapper.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
 		EADC43452C90BFE0004414F0 = {
 			isa = PBXGroup;
 			children = (
@@ -76,8 +100,8 @@
 			isa = PBXGroup;
 			children = (
 				EADC43522C90BFE0004414F0 /* BTCTracker.h */,
-				EADC43672C90C733004414F0 /* Exchange.swift */,
-				EA5875CE2C9281E900CD1C34 /* BinanceExchangeMapper.swift */,
+				EA5875D12C92822900CD1C34 /* Feature */,
+				EA5875D22C92823000CD1C34 /* API */,
 			);
 			path = BTCTracker;
 			sourceTree = "<group>";
@@ -85,7 +109,7 @@
 		EADC435B2C90BFE1004414F0 /* BTCTrackerTests */ = {
 			isa = PBXGroup;
 			children = (
-				EADC436A2C90CC44004414F0 /* BinanceExchangeMapperTests.swift */,
+				EA5875D02C92822300CD1C34 /* API */,
 			);
 			path = BTCTrackerTests;
 			sourceTree = "<group>";
