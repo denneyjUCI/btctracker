@@ -54,9 +54,4 @@ final class BinanceExchangeMapperTests: XCTestCase {
         return (item, try! JSONSerialization.data(withJSONObject: jsonData))
     }
 
-    private func anyHTTPURLResponse(code: Int = 200) -> HTTPURLResponse {
-        let url = URL(string: "http://any-url.com")!
-        return HTTPURLResponse(url: url, statusCode: code, httpVersion: nil, headerFields: nil)!
-    }
-
 }
