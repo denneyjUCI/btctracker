@@ -42,7 +42,7 @@ final class URLSessionHTTPClientTests: XCTestCase {
     }
 
     func test_getRequest_failsOnRequestError() {
-        let requestError = NSError(domain: "any error", code: -1)
+        let requestError = anyNSError()
         let receivedError = resultErrorFor(data: nil, response: nil, error: requestError) as? NSError
 
         XCTAssertEqual(receivedError?.domain, requestError.domain)
@@ -81,6 +81,10 @@ final class URLSessionHTTPClientTests: XCTestCase {
         let sut = URLSessionHTTPClient(session: session)
         trackForMemoryLeaks(sut, file: file, line: line)
         return sut
+    }
+
+    private func anyNSError() -> NSError {
+        NSError(domain: "any error", code: -1)
     }
 
     private func anyURL() -> URL {
