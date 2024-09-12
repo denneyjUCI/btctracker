@@ -67,21 +67,12 @@ final class URLSessionHTTPClientTests: XCTestCase {
     func test_getRequest_succeedsOnHTTPURLResponseWithData() {
         let data = anyData()
         let response = anyHTTPURLResponse()
-        URLProtocolStub.stub(data: data, response: response, error: nil)
-        let exp = expectation(description: "wait for request")
 
-        makeSUT().get(request: anyURLRequest()) { result in
-            guard case let .success((receivedData, receivedResponse)) = result else {
-                XCTFail("Expected success, got \(result) instead")
-                return
-            }
-            XCTAssertEqual(receivedData, data)
-            XCTAssertEqual(receivedResponse.url, response.url)
-            XCTAssertEqual(receivedResponse.statusCode, response.statusCode)
-            exp.fulfill()
-        }
+        let values = resultValuesFor(data: data, response: response, error: nil)
 
-        wait(for: [exp], timeout: 1)
+        XCTAssertEqual(values?.data, data)
+        XCTAssertEqual(values?.response.url, response.url)
+        XCTAssertEqual(values?.response.statusCode, response.statusCode)
     }
 
     // MARK: - Helpers
@@ -100,6 +91,26 @@ final class URLSessionHTTPClientTests: XCTestCase {
 
         wait(for: [exp], timeout: 1)
         return capturedError
+    }
+
+    private func resultValuesFor(data: Data?, response: URLResponse?, error: Error?) -> (data: Data, response: HTTPURLResponse)? {
+        URLProtocolStub.stub(data: data, response: response, error: nil)
+        let exp = expectation(description: "wait for request")
+
+        var capturedValues: (Data, HTTPURLResponse)?
+        makeSUT().get(request: anyURLRequest()) { result in
+            guard case let .success((receivedData, receivedResponse)) = result else {
+                XCTFail("Expected success, got \(result) instead")
+                return
+            }
+
+            capturedValues = (receivedData, receivedResponse)
+            exp.fulfill()
+        }
+
+        wait(for: [exp], timeout: 1)
+
+        return capturedValues
     }
 
     private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> URLSessionHTTPClient {
