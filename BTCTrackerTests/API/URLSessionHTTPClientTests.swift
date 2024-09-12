@@ -54,7 +54,7 @@ final class URLSessionHTTPClientTests: XCTestCase {
     }
 
     func test_getRequest_failsOnNonHTTPURLResponse() {
-        let nonHTTPUrlResponse = URLResponse(url: anyURLRequest().url!, mimeType: nil, expectedContentLength: 0, textEncodingName: nil)
+        let nonHTTPUrlResponse = URLResponse(url: anyURL(), mimeType: nil, expectedContentLength: 0, textEncodingName: nil)
         XCTAssertNotNil(resultErrorFor(data: nil, response: nonHTTPUrlResponse, error: nil))
     }
 
@@ -83,8 +83,12 @@ final class URLSessionHTTPClientTests: XCTestCase {
         return sut
     }
 
+    private func anyURL() -> URL {
+        URL(string: "http://any-url.com")!
+    }
+
     private func anyURLRequest() -> URLRequest {
-        URLRequest(url: URL(string: "http://any-url.com")!)
+        URLRequest(url: anyURL())
     }
 
     private func trackForMemoryLeaks(_ object: AnyObject, file: StaticString = #filePath, line: UInt = #line) {
