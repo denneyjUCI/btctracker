@@ -5,8 +5,10 @@ final class URLSessionHTTPClient {
     init(session: URLSession) {
         self.session = session
     }
-    func get(request: URLRequest) {
-        session.dataTask(with: request, completionHandler: { _, _, _ in }).resume()
+    func get(request: URLRequest, completion: @escaping (Error?) -> Void = { _ in }) {
+        session.dataTask(with: request, completionHandler: { _, _, error in
+            completion(error)
+        }).resume()
     }
 }
 
@@ -31,6 +33,24 @@ final class URLSessionHTTPClientTests: XCTestCase {
 
         wait(for: [exp], timeout: 1)
     }
+
+    func test_getRequest_failsOnRequestError() {
+        let request = URLRequest(url: URL(string: "http://any-url.com")!)
+        let exp = expectation(description: "wait for request")
+
+        let requestError = NSError(domain: "any error", code: -1)
+        URLProtocolStub.stub(data: nil, response: nil, error: requestError)
+
+        makeSUT().get(request: request) { error in
+            let nsError = error as? NSError
+            XCTAssertEqual(nsError?.domain, requestError.domain)
+            XCTAssertEqual(nsError?.code, requestError.code)
+            exp.fulfill()
+        }
+
+        wait(for: [exp], timeout: 1)
+    }
+
 
     // MARK: - Helpers
     private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> URLSessionHTTPClient {
