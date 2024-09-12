@@ -52,9 +52,11 @@ final class URLSessionHTTPClientTests: XCTestCase {
     func test_getRequest_failsOnAllUnexpectedValuesRepresentations() {
         let anyData = Data("any".utf8)
         let nonHTTPURLResponse = URLResponse(url: anyURL(), mimeType: nil, expectedContentLength: 0, textEncodingName: nil)
+
         XCTAssertNotNil(resultErrorFor(data: nil, response: nil, error: nil))
         XCTAssertNotNil(resultErrorFor(data: nil, response: nonHTTPURLResponse, error: nil))
         XCTAssertNotNil(resultErrorFor(data: anyData, response: nil, error: nil))
+        XCTAssertNotNil(resultErrorFor(data: anyData, response: nil, error: anyNSError()))
     }
 
     // MARK: - Helpers
