@@ -48,8 +48,8 @@ final class BinanceExchangeMapperTests: XCTestCase {
     }
 
     // MARK: - Helpers
-    private func makeExchangeJSON(_ symbol: String = "BTCUSDT", _ price: Double = 200.0) -> (model: Exchange, data: Data) {
-        let item = Exchange(symbol: symbol, rate: price)
+    private func makeExchangeJSON(_ symbol: String = "BTCUSDT", _ price: String = "200.0") -> (model: Exchange, data: Data) {
+        let item = Exchange(symbol: symbol, rate: Double(price) ?? 0)
         let jsonData: [String: Any] = [ "symbol": symbol, "price": price ]
         return (item, try! JSONSerialization.data(withJSONObject: jsonData))
     }

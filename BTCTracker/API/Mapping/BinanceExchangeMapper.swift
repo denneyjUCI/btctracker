@@ -32,10 +32,10 @@ public final class BinanceExchangeMapper {
 
     private struct Root: Decodable {
         let symbol: String
-        let price: Double
+        let price: String
 
         var exchange: Exchange {
-            Exchange(symbol: symbol, rate: price)
+            Exchange(symbol: symbol, rate: Double(price) ?? 0)
         }
     }
 }
