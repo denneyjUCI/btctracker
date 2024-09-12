@@ -1,4 +1,5 @@
 import XCTest
+import BTCTracker
 
 final class URLSessionHTTPClient {
     private let session: URLSession
@@ -8,12 +9,14 @@ final class URLSessionHTTPClient {
 
     private struct UnexpectedValuesRepresentation: Error {}
 
-    func get(request: URLRequest, completion: @escaping (Error?) -> Void = { _ in }) {
-        session.dataTask(with: request, completionHandler: { _, _, error in
+    func get(request: URLRequest, completion: @escaping (HTTPClient.Result) -> Void = { _ in }) {
+        session.dataTask(with: request, completionHandler: { data, response, error in
             if let error = error {
-                completion(error)
+                completion(.failure(error))
+            } else if let data = data, let response = response as? HTTPURLResponse {
+                completion(.success((data, response)))
             } else {
-                completion(UnexpectedValuesRepresentation())
+                completion(.failure(UnexpectedValuesRepresentation()))
             }
         }).resume()
     }
@@ -61,14 +64,37 @@ final class URLSessionHTTPClientTests: XCTestCase {
         XCTAssertNotNil(resultErrorFor(data: anyData(), response: nonHTTPURLResponse(), error: nil))
     }
 
+    func test_getRequest_succeedsOnHTTPURLResponseWithData() {
+        let data = anyData()
+        let response = anyHTTPURLResponse()
+        URLProtocolStub.stub(data: data, response: response, error: nil)
+        let exp = expectation(description: "wait for request")
+
+        makeSUT().get(request: anyURLRequest()) { result in
+            guard case let .success((receivedData, receivedResponse)) = result else {
+                XCTFail("Expected success, got \(result) instead")
+                return
+            }
+            XCTAssertEqual(receivedData, data)
+            XCTAssertEqual(receivedResponse.url, response.url)
+            XCTAssertEqual(receivedResponse.statusCode, response.statusCode)
+            exp.fulfill()
+        }
+
+        wait(for: [exp], timeout: 1)
+    }
+
     // MARK: - Helpers
     private func resultErrorFor(data: Data?, response: URLResponse?, error: Error? = nil) -> Error? {
         let exp = expectation(description: "wait for request")
         URLProtocolStub.stub(data: data, response: response, error: error)
 
         var capturedError: Error?
-        makeSUT().get(request: anyURLRequest()) { error in
-            capturedError = error
+        makeSUT().get(request: anyURLRequest()) { result in
+            if case let .failure(error) = result {
+                capturedError = error
+            }
+
             exp.fulfill()
         }
 
@@ -93,7 +119,7 @@ final class URLSessionHTTPClientTests: XCTestCase {
         URLResponse(url: anyURL(), mimeType: nil, expectedContentLength: 0, textEncodingName: nil)
     }
 
-    private func anyHTTPURLResponse() -> URLResponse {
+    private func anyHTTPURLResponse() -> HTTPURLResponse {
         HTTPURLResponse(url: anyURL(), statusCode: 200, httpVersion: nil, headerFields: nil)!
     }
 
