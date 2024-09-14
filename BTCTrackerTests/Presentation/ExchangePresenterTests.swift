@@ -62,7 +62,7 @@ final class ExchangePresenterTests: XCTestCase {
             .display(error: nil),
             .display(message: "any symbol exchange rate is 300.00"),
             .display(isLoading: false),
-            .display(error: "Failed to update value. Showing last updated value from Sep 14, 2024 at 6:19 PM"),
+            .display(error: "Failed to update value. Showing last updated value from Sep 14, 2024 at 11:19 PM"),
         ])
     }
 
@@ -70,11 +70,13 @@ final class ExchangePresenterTests: XCTestCase {
     private func makeSUT(
         mapper: @escaping (Exchange) -> ExchangeViewModel = { _ in ExchangeViewModel(exchange: Exchange(symbol: "any", rate: 0)) },
         currentDate: @escaping () -> Date = Date.init,
+        locale: Locale = .init(identifier: "en_US_POSIX"),
+        timeZone: TimeZone = .gmt,
         file: StaticString = #filePath,
         line: UInt = #line)
     -> (sut: ExchangePresenter, view: ViewSpy) {
         let view = ViewSpy()
-        let sut = ExchangePresenter(exchangeView: view, loadingView: view, errorView: view, mapper: mapper, currentDate: currentDate)
+        let sut = ExchangePresenter(exchangeView: view, loadingView: view, errorView: view, mapper: mapper, locale: locale, timeZone: timeZone, currentDate: currentDate)
         trackForMemoryLeaks(view, file: file, line: line)
         trackForMemoryLeaks(sut, file: file, line: line)
         return (sut, view)

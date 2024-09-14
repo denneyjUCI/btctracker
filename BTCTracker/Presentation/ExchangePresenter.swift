@@ -27,12 +27,7 @@ public final class ExchangePresenter {
     private let mapper: (Exchange) -> ExchangeViewModel
     private let currentDate: () -> Date
     private var lastUpdated: Date?
-    private let dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .short
-        return formatter
-    }()
+    private let dateFormatter: DateFormatter
 
     private var failureMessage: String {
         var message = "Failed to update value."
@@ -42,12 +37,18 @@ public final class ExchangePresenter {
         return message
     }
 
-    public init(exchangeView: ExchangeView, loadingView: ExchangeLoadingView, errorView: ExchangeErrorView, mapper: @escaping (Exchange) -> ExchangeViewModel, currentDate: @escaping () -> Date) {
+    public init(exchangeView: ExchangeView, loadingView: ExchangeLoadingView, errorView: ExchangeErrorView, mapper: @escaping (Exchange) -> ExchangeViewModel, locale: Locale = .current, timeZone: TimeZone = .current, currentDate: @escaping () -> Date) {
         self.exchangeView = exchangeView
         self.loadingView = loadingView
         self.errorView = errorView
         self.mapper = mapper
         self.currentDate = currentDate
+        let formatter = DateFormatter()
+        formatter.locale = locale
+        formatter.timeZone = timeZone
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .short
+        dateFormatter = formatter
     }
 
     public func didStartLoading() {
