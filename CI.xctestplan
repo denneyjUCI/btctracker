@@ -26,6 +26,13 @@
         "identifier" : "EADC43562C90BFE1004414F0",
         "name" : "BTCTrackerTests"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:BTCTracker.xcodeproj",
+        "identifier" : "EA5875FF2C93A77500CD1C34",
+        "name" : "BTCTrackerAPIEndToEndTests"
+      }
     }
   ],
   "version" : 1
