@@ -18,6 +18,7 @@
 		EA58760A2C93A77E00CD1C34 /* BinanceAPIEndToEndTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5875FA2C93A26100CD1C34 /* BinanceAPIEndToEndTests.swift */; };
 		EA5AABE92C9643AC00B30258 /* SharedTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5AABE82C9643AC00B30258 /* SharedTestHelpers.swift */; };
 		EA5AABEA2C9643B100B30258 /* SharedTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5AABE82C9643AC00B30258 /* SharedTestHelpers.swift */; };
+		EA5AABED2C9645DD00B30258 /* ExchangePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5AABEC2C9645DD00B30258 /* ExchangePresenterTests.swift */; };
 		EADC43582C90BFE1004414F0 /* BTCTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EADC434F2C90BFE0004414F0 /* BTCTracker.framework */; };
 		EADC435E2C90BFE1004414F0 /* BTCTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = EADC43522C90BFE0004414F0 /* BTCTracker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EADC43682C90C733004414F0 /* Exchange.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADC43672C90C733004414F0 /* Exchange.swift */; };
@@ -52,6 +53,7 @@
 		EA5875FA2C93A26100CD1C34 /* BinanceAPIEndToEndTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinanceAPIEndToEndTests.swift; sourceTree = "<group>"; };
 		EA5876002C93A77500CD1C34 /* BTCTrackerAPIEndToEndTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BTCTrackerAPIEndToEndTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA5AABE82C9643AC00B30258 /* SharedTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedTestHelpers.swift; sourceTree = "<group>"; };
+		EA5AABEC2C9645DD00B30258 /* ExchangePresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangePresenterTests.swift; sourceTree = "<group>"; };
 		EADC434F2C90BFE0004414F0 /* BTCTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BTCTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EADC43522C90BFE0004414F0 /* BTCTracker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTCTracker.h; sourceTree = "<group>"; };
 		EADC43572C90BFE1004414F0 /* BTCTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BTCTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -157,6 +159,14 @@
 			path = BTCTrackerAPIEndToEndTests;
 			sourceTree = "<group>";
 		};
+		EA5AABEB2C9645C200B30258 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				EA5AABEC2C9645DD00B30258 /* ExchangePresenterTests.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
 		EADC43452C90BFE0004414F0 = {
 			isa = PBXGroup;
 			children = (
@@ -193,6 +203,7 @@
 			children = (
 				EA5AABE82C9643AC00B30258 /* SharedTestHelpers.swift */,
 				EA5875D02C92822300CD1C34 /* API */,
+				EA5AABEB2C9645C200B30258 /* Presentation */,
 			);
 			path = BTCTrackerTests;
 			sourceTree = "<group>";
@@ -362,6 +373,7 @@
 				EA5875DE2C933ECF00CD1C34 /* Helpers.swift in Sources */,
 				EA5AABE92C9643AC00B30258 /* SharedTestHelpers.swift in Sources */,
 				EADC436B2C90CC44004414F0 /* BinanceExchangeMapperTests.swift in Sources */,
+				EA5AABED2C9645DD00B30258 /* ExchangePresenterTests.swift in Sources */,
 				EA5875F32C93717E00CD1C34 /* URLSessionHTTPClientTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
