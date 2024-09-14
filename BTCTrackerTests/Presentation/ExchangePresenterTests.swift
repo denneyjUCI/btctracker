@@ -33,7 +33,7 @@ final class ExchangePresenterTests: XCTestCase {
 
         XCTAssertEqual(view.messages, [
             .display(error: nil),
-            .display(message: "any symbol is worth $300.00"),
+            .display(message: "any symbol exchange rate is 300.00"),
             .display(isLoading: false)
         ])
     }
@@ -60,7 +60,7 @@ final class ExchangePresenterTests: XCTestCase {
 
         XCTAssertEqual(view.messages, [
             .display(error: nil),
-            .display(message: "any symbol is worth $300.00"),
+            .display(message: "any symbol exchange rate is 300.00"),
             .display(isLoading: false),
             .display(error: "Failed to update value. Showing last updated value from Sep 14, 2024 at 6:19 PM"),
         ])
