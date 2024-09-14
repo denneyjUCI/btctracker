@@ -10,8 +10,13 @@ import XCTest
 final class ExchangePresenter {
     typealias View = ExchangePresenterTests.ViewSpy
 
+    private let view: View
     init(view: View) {
+        self.view = view
+    }
 
+    func didStartLoading() {
+        view.display(isLoading: true)
     }
 }
 
@@ -25,9 +30,27 @@ final class ExchangePresenterTests: XCTestCase {
         XCTAssertEqual(view.messageCount, 0)
     }
 
+    func test_startLoading_displaysStartsLoadingMessage() {
+        let view = ViewSpy()
+        let sut = ExchangePresenter(view: view)
+
+        sut.didStartLoading()
+
+        XCTAssertEqual(view.messages, [ .display(isLoading: true) ])
+    }
+
     // MARK: - Helpers
     final class ViewSpy {
         var messageCount = 0
+
+        private(set) var messages = [Message]()
+        enum Message: Equatable {
+            case display(isLoading: Bool)
+        }
+
+        func display(isLoading: Bool) {
+            messages.append(.display(isLoading: isLoading))
+        }
     }
 
 }
