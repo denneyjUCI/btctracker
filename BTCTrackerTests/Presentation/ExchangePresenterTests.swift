@@ -23,16 +23,13 @@ final class ExchangePresenter {
 final class ExchangePresenterTests: XCTestCase {
 
     func test_init_doesNotSendMessagesToView() {
-        let view = ViewSpy()
-
-        let _ = ExchangePresenter(view: view)
+        let (_, view) = makeSUT()
 
         XCTAssertEqual(view.messageCount, 0)
     }
 
     func test_startLoading_displaysStartsLoadingMessage() {
-        let view = ViewSpy()
-        let sut = ExchangePresenter(view: view)
+        let (sut, view) = makeSUT()
 
         sut.didStartLoading()
 
@@ -40,6 +37,14 @@ final class ExchangePresenterTests: XCTestCase {
     }
 
     // MARK: - Helpers
+    private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (sut: ExchangePresenter, view: ViewSpy) {
+        let view = ViewSpy()
+        let sut = ExchangePresenter(view: view)
+        trackForMemoryLeaks(view, file: file, line: line)
+        trackForMemoryLeaks(sut, file: file, line: line)
+        return (sut, view)
+    }
+
     final class ViewSpy {
         var messageCount = 0
 
