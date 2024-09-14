@@ -22,15 +22,23 @@ struct ExchangeViewModel: Equatable, Hashable {
 
 }
 
-protocol ExchangeView {
+protocol ExchangeLoadingView {
     func display(isLoading: Bool)
+}
+
+protocol ExchangeErrorView {
     func display(error: String?)
+}
+
+protocol ExchangeView {
     func display(viewModel: ExchangeViewModel)
 }
 
 final class ExchangePresenter {
 
-    private let view: ExchangeView
+    private let loadingView: ExchangeLoadingView
+    private let errorView: ExchangeErrorView
+    private let exchangeView: ExchangeView
     private let mapper: (Exchange) -> ExchangeViewModel
     private let currentDate: () -> Date
     private var lastUpdated: Date?
@@ -49,26 +57,28 @@ final class ExchangePresenter {
         return message
     }
 
-    init(view: ExchangeView, mapper: @escaping (Exchange) -> ExchangeViewModel, currentDate: @escaping () -> Date) {
-        self.view = view
+    init(exchangeView: ExchangeView, loadingView: ExchangeLoadingView, errorView: ExchangeErrorView, mapper: @escaping (Exchange) -> ExchangeViewModel, currentDate: @escaping () -> Date) {
+        self.exchangeView = exchangeView
+        self.loadingView = loadingView
+        self.errorView = errorView
         self.mapper = mapper
         self.currentDate = currentDate
     }
 
     func didStartLoading() {
-        view.display(isLoading: true)
+        loadingView.display(isLoading: true)
     }
 
     func didFinishLoading(with exchange: Exchange) {
-        view.display(error: nil)
-        view.display(isLoading: false)
-        view.display(viewModel: mapper(exchange))
+        errorView.display(error: nil)
+        loadingView.display(isLoading: false)
+        exchangeView.display(viewModel: mapper(exchange))
         lastUpdated = currentDate()
     }
 
     func didFinishLoading(with error: Error) {
-        view.display(isLoading: false)
-        view.display(error: failureMessage)
+        loadingView.display(isLoading: false)
+        errorView.display(error: failureMessage)
     }
 }
 
@@ -138,7 +148,7 @@ final class ExchangePresenterTests: XCTestCase {
         line: UInt = #line)
     -> (sut: ExchangePresenter, view: ViewSpy) {
         let view = ViewSpy()
-        let sut = ExchangePresenter(view: view, mapper: mapper, currentDate: currentDate)
+        let sut = ExchangePresenter(exchangeView: view, loadingView: view, errorView: view, mapper: mapper, currentDate: currentDate)
         trackForMemoryLeaks(view, file: file, line: line)
         trackForMemoryLeaks(sut, file: file, line: line)
         return (sut, view)
@@ -148,7 +158,7 @@ final class ExchangePresenterTests: XCTestCase {
         NSError(domain: "any error", code: -1)
     }
 
-    final class ViewSpy: ExchangeView {
+    final class ViewSpy: ExchangeView, ExchangeLoadingView, ExchangeErrorView {
         private(set) var messages = Set<Message>()
         enum Message: Hashable {
             case display(error: String?)
