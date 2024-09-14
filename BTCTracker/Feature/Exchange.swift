@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct Exchange: Equatable {
+public struct Exchange: Equatable, Hashable {
     public let symbol: String
     public let rate: Double
 
