@@ -27,9 +27,23 @@ final class ExchangePresenter {
 
     private let view: View
     private let mapper: (Exchange) -> ExchangeViewModel
-    init(view: View, mapper: @escaping (Exchange) -> ExchangeViewModel) {
+    private let currentDate: () -> Date
+    private var lastUpdated: Date!
+    private let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .short
+        return formatter
+    }()
+
+    private var failureMessage: String {
+        "Failed to update value. Showing last updated value from \(dateFormatter.string(from: lastUpdated))"
+    }
+
+    init(view: View, mapper: @escaping (Exchange) -> ExchangeViewModel, currentDate: @escaping () -> Date) {
         self.view = view
         self.mapper = mapper
+        self.currentDate = currentDate
     }
 
     func didStartLoading() {
@@ -40,6 +54,12 @@ final class ExchangePresenter {
         view.display(error: nil)
         view.display(isLoading: false)
         view.display(viewModel: mapper(exchange))
+        lastUpdated = currentDate()
+    }
+
+    func didFinishLoading(with error: Error) {
+        view.display(isLoading: false)
+        view.display(error: failureMessage)
     }
 }
 
@@ -73,17 +93,39 @@ final class ExchangePresenterTests: XCTestCase {
         ])
     }
 
+    func test_didFinishLoadingWithError_stopsLoadingAndDisplaysErrorAndLastUpdatedData() {
+        let exchange = Exchange(symbol: "any symbol", rate: 300.0)
+        let makeViewModel = { exchange in ExchangeViewModel(exchange: exchange) }
+        let fixedCurrentDate = Date(timeIntervalSince1970: 1726355960)
+        let (sut, view) = makeSUT(mapper: makeViewModel, currentDate: { fixedCurrentDate })
+
+        sut.didFinishLoading(with: exchange)
+        sut.didFinishLoading(with: anyNSError())
+
+        XCTAssertEqual(view.messages, [
+            .display(error: nil),
+            .display(message: "any symbol is worth $300.00"),
+            .display(isLoading: false),
+            .display(error: "Failed to update value. Showing last updated value from Sep 14, 2024 at 6:19 PM"),
+        ])
+    }
+
     // MARK: - Helpers
     private func makeSUT(
         mapper: @escaping (Exchange) -> ExchangeViewModel = { _ in ExchangeViewModel(exchange: Exchange(symbol: "any", rate: 0)) },
+        currentDate: @escaping () -> Date = Date.init,
         file: StaticString = #filePath,
         line: UInt = #line)
     -> (sut: ExchangePresenter, view: ViewSpy) {
         let view = ViewSpy()
-        let sut = ExchangePresenter(view: view, mapper: mapper)
+        let sut = ExchangePresenter(view: view, mapper: mapper, currentDate: currentDate)
         trackForMemoryLeaks(view, file: file, line: line)
         trackForMemoryLeaks(sut, file: file, line: line)
         return (sut, view)
+    }
+
+    private func anyNSError() -> NSError {
+        NSError(domain: "any error", code: -1)
     }
 
     final class ViewSpy {
