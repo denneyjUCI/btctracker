@@ -28,7 +28,7 @@ final class ExchangePresenter {
     private let view: View
     private let mapper: (Exchange) -> ExchangeViewModel
     private let currentDate: () -> Date
-    private var lastUpdated: Date!
+    private var lastUpdated: Date?
     private let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
@@ -37,7 +37,11 @@ final class ExchangePresenter {
     }()
 
     private var failureMessage: String {
-        "Failed to update value. Showing last updated value from \(dateFormatter.string(from: lastUpdated))"
+        var message = "Failed to update value."
+        if let lastUpdated = lastUpdated {
+            message += " Showing last updated value from \(dateFormatter.string(from: lastUpdated))"
+        }
+        return message
     }
 
     init(view: View, mapper: @escaping (Exchange) -> ExchangeViewModel, currentDate: @escaping () -> Date) {
@@ -94,6 +98,17 @@ final class ExchangePresenterTests: XCTestCase {
     }
 
     func test_didFinishLoadingWithError_stopsLoadingAndDisplaysErrorAndLastUpdatedData() {
+        let (sut, view) = makeSUT()
+
+        sut.didFinishLoading(with: anyNSError())
+
+        XCTAssertEqual(view.messages, [
+            .display(isLoading: false),
+            .display(error: "Failed to update value."),
+        ])
+    }
+
+    func test_didFinishLoadingWithError_afterLoadingSucceeds_stopsLoadingAndDisplaysErrorAndLastUpdatedData() {
         let exchange = Exchange(symbol: "any symbol", rate: 300.0)
         let makeViewModel = { exchange in ExchangeViewModel(exchange: exchange) }
         let fixedCurrentDate = Date(timeIntervalSince1970: 1726355960)
