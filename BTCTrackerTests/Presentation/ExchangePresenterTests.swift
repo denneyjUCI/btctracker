@@ -22,10 +22,15 @@ struct ExchangeViewModel: Equatable, Hashable {
 
 }
 
-final class ExchangePresenter {
-    typealias View = ExchangePresenterTests.ViewSpy
+protocol ExchangeView {
+    func display(isLoading: Bool)
+    func display(error: String?)
+    func display(viewModel: ExchangeViewModel)
+}
 
-    private let view: View
+final class ExchangePresenter {
+
+    private let view: ExchangeView
     private let mapper: (Exchange) -> ExchangeViewModel
     private let currentDate: () -> Date
     private var lastUpdated: Date?
@@ -44,7 +49,7 @@ final class ExchangePresenter {
         return message
     }
 
-    init(view: View, mapper: @escaping (Exchange) -> ExchangeViewModel, currentDate: @escaping () -> Date) {
+    init(view: ExchangeView, mapper: @escaping (Exchange) -> ExchangeViewModel, currentDate: @escaping () -> Date) {
         self.view = view
         self.mapper = mapper
         self.currentDate = currentDate
@@ -143,7 +148,7 @@ final class ExchangePresenterTests: XCTestCase {
         NSError(domain: "any error", code: -1)
     }
 
-    final class ViewSpy {
+    final class ViewSpy: ExchangeView {
         private(set) var messages = Set<Message>()
         enum Message: Hashable {
             case display(error: String?)
