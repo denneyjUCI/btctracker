@@ -25,7 +25,7 @@ final class ExchangePresenterTests: XCTestCase {
     func test_init_doesNotSendMessagesToView() {
         let (_, view) = makeSUT()
 
-        XCTAssertEqual(view.messageCount, 0)
+        XCTAssertEqual(view.messages, [])
     }
 
     func test_startLoading_displaysStartsLoadingMessage() {
@@ -46,8 +46,6 @@ final class ExchangePresenterTests: XCTestCase {
     }
 
     final class ViewSpy {
-        var messageCount = 0
-
         private(set) var messages = [Message]()
         enum Message: Equatable {
             case display(isLoading: Bool)
