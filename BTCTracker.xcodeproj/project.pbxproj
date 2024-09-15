@@ -21,6 +21,7 @@
 		EA5AABED2C9645DD00B30258 /* ExchangePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5AABEC2C9645DD00B30258 /* ExchangePresenterTests.swift */; };
 		EA5AABEF2C9654AB00B30258 /* ExchangePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5AABEE2C9654AB00B30258 /* ExchangePresenter.swift */; };
 		EA5AABF22C96550700B30258 /* ExchangeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5AABF12C96550700B30258 /* ExchangeViewModel.swift */; };
+		EAD6E6A12C9793CA005EE148 /* CryptoCompareAPIEndToEndTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD6E6A02C9793CA005EE148 /* CryptoCompareAPIEndToEndTests.swift */; };
 		EADC43582C90BFE1004414F0 /* BTCTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EADC434F2C90BFE0004414F0 /* BTCTracker.framework */; };
 		EADC435E2C90BFE1004414F0 /* BTCTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = EADC43522C90BFE0004414F0 /* BTCTracker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EADC43682C90C733004414F0 /* Exchange.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADC43672C90C733004414F0 /* Exchange.swift */; };
@@ -58,6 +59,7 @@
 		EA5AABEC2C9645DD00B30258 /* ExchangePresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangePresenterTests.swift; sourceTree = "<group>"; };
 		EA5AABEE2C9654AB00B30258 /* ExchangePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangePresenter.swift; sourceTree = "<group>"; };
 		EA5AABF12C96550700B30258 /* ExchangeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeViewModel.swift; sourceTree = "<group>"; };
+		EAD6E6A02C9793CA005EE148 /* CryptoCompareAPIEndToEndTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoCompareAPIEndToEndTests.swift; sourceTree = "<group>"; };
 		EADC434F2C90BFE0004414F0 /* BTCTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BTCTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EADC43522C90BFE0004414F0 /* BTCTracker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTCTracker.h; sourceTree = "<group>"; };
 		EADC43572C90BFE1004414F0 /* BTCTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BTCTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -158,6 +160,7 @@
 		EA5876012C93A77500CD1C34 /* BTCTrackerAPIEndToEndTests */ = {
 			isa = PBXGroup;
 			children = (
+				EAD6E6A02C9793CA005EE148 /* CryptoCompareAPIEndToEndTests.swift */,
 				EA5875FA2C93A26100CD1C34 /* BinanceAPIEndToEndTests.swift */,
 			);
 			path = BTCTrackerAPIEndToEndTests;
@@ -362,6 +365,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAD6E6A12C9793CA005EE148 /* CryptoCompareAPIEndToEndTests.swift in Sources */,
 				EA5AABEA2C9643B100B30258 /* SharedTestHelpers.swift in Sources */,
 				EA58760A2C93A77E00CD1C34 /* BinanceAPIEndToEndTests.swift in Sources */,
 			);
