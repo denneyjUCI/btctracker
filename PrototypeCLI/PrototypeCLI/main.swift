@@ -22,8 +22,10 @@ class ConsoleApp {
                 let formatter = DateFormatter()
                 formatter.dateStyle = .short
                 formatter.timeStyle = .short
-                text = "Update failed. Displaying last value from \(formatter.string(from: lastUpdatedTime))\n"
+                text = "Update failed. Displaying last value from \(formatter.string(from: lastUpdatedTime))"
             }
+
+            text += "\n"
 
             if let data = text.data(using: .utf8) {
                 stdError.write(data)
