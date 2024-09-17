@@ -74,10 +74,7 @@ final class TimerInfraTests: XCTestCase {
     func test_stop_afterStart_doesNotSendTick() {
         var tickCount = 0
         let stopped = expectation(description: "wait for stop")
-        let hertz = 10000
-        let sut = makeSUT(hertz: hertz, tick: {
-            tickCount += 1
-        }, stopped: stopped.fulfill)
+        let sut = makeSUT(tick: { tickCount += 1 }, stopped: stopped.fulfill)
 
         sut.start()
         sut.stop()
