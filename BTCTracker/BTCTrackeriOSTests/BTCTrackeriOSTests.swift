@@ -28,15 +28,13 @@ class ExchangeViewController: UIViewController {
 final class BTCTrackeriOSTests: XCTestCase {
 
     func test_init_doesNotRequestExchangeRate() {
-        let loader = LoaderSpy()
-        let _ = ExchangeViewController()
+        let (_, loader) = makeSUT()
 
         XCTAssertEqual(loader.loadCount, 0)
     }
 
     func test_viewDidLoad_requestsExchangeRates() {
-        let loader = LoaderSpy()
-        let sut = ExchangeViewController(loader: loader)
+        let (sut, loader) = makeSUT()
 
         sut.loadViewIfNeeded()
 
@@ -44,6 +42,15 @@ final class BTCTrackeriOSTests: XCTestCase {
     }
 
     // MARK: - Helpers
+    func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (sut: ExchangeViewController, loader: LoaderSpy) {
+        let loader = LoaderSpy()
+        let sut = ExchangeViewController(loader: loader)
+        trackForMemoryLeaks(loader, file: file, line: line)
+        trackForMemoryLeaks(sut, file: file, line: line)
+        return (sut, loader)
+    }
+
+
     class LoaderSpy {
         var loadCount = 0
 
