@@ -28,7 +28,7 @@ final class TimerInfraTests: XCTestCase {
 
     func test_start_sendsTick() {
         var tickCount = 0
-        let sut = FoundationTimer(tick: { tickCount += 1})
+        let sut = FoundationTimer(tick: { tickCount += 1 })
 
         sut.start()
 
