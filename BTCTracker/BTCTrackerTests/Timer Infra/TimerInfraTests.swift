@@ -1,18 +1,25 @@
 import XCTest
 
 final class FoundationTimer {
-    private let timer: Timer
+    private let hertz: Int
+    private var timer: Timer?
     private let tick: () -> Void
     init(hertz: Int = 1, tick: @escaping () -> Void = {}) {
+        self.hertz = hertz
         self.tick = tick
-        timer = Timer.scheduledTimer(withTimeInterval: 1 / Double(hertz), repeats: true, block: { _ in
-            tick()
-        })
     }
 
     func start() {
+        let timer = Timer.scheduledTimer(withTimeInterval: 1 / Double(hertz), repeats: true, block: { [tick] _ in
+            tick()
+        })
         RunLoop.main.add(timer, forMode: .common)
+        self.timer = timer
         tick()
+    }
+
+    deinit {
+        timer?.invalidate()
     }
 }
 
@@ -35,19 +42,15 @@ final class TimerInfraTests: XCTestCase {
     }
 
     func test_start_sendsTickAtInterval() {
-        var tickCount = 0
-        let exp = expectation(description: "wait for tick")
-        exp.expectedFulfillmentCount = 2
+        let exp = expectation(description: "wait for ticks")
+        exp.expectedFulfillmentCount = 3
 
         let sut = makeSUT(hertz: 1000, tick: {
-            tickCount += 1
             exp.fulfill()
         })
         sut.start()
 
-        wait(for: [exp], timeout: 0.1)
-
-        XCTAssertEqual(tickCount, 2)
+        wait(for: [exp], timeout: 0.05)
     }
 
     // MARK: - Helpers
