@@ -58,6 +58,7 @@ final class TimerInfraTests: XCTestCase {
         line: UInt = #line
     ) -> FoundationTimer {
         let sut = FoundationTimer(hertz: hertz, tick: tick)
+        trackForMemoryLeaks(sut, file: file, line: line)
         return sut
     }
 
