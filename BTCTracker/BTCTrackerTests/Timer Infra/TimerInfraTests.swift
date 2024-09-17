@@ -43,14 +43,13 @@ final class TimerInfraTests: XCTestCase {
 
     func test_start_sendsTickAtInterval() {
         let exp = expectation(description: "wait for ticks")
-        exp.expectedFulfillmentCount = 3
+        exp.expectedFulfillmentCount = 300
+        let hertz = 10000
 
-        let sut = makeSUT(hertz: 1000, tick: {
-            exp.fulfill()
-        })
+        let sut = makeSUT(hertz: hertz, tick: exp.fulfill)
         sut.start()
 
-        wait(for: [exp], timeout: 0.05)
+        wait(for: [exp], timeout: Double(exp.expectedFulfillmentCount) / Double(hertz) + 0.05)
     }
 
     // MARK: - Helpers
