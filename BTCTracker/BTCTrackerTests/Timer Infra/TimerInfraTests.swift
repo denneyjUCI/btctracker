@@ -1,38 +1,5 @@
 import XCTest
-
-final class FoundationTimer {
-    private let hertz: Int
-    private var timer: Timer?
-    private let tick: () -> Void
-    private let stopped: () -> Void
-
-    init(hertz: Int = 1, tick: @escaping () -> Void = {}, stopped: @escaping () -> Void) {
-        self.hertz = hertz
-        self.tick = tick
-        self.stopped = stopped
-    }
-
-    func start() {
-        let timer = Timer.scheduledTimer(withTimeInterval: 1 / Double(hertz), repeats: true, block: { [tick] _ in
-            tick()
-        })
-        RunLoop.main.add(timer, forMode: .common)
-        self.timer = timer
-        tick()
-    }
-
-    func stop() {
-        if let timer = timer {
-            timer.invalidate()
-            self.timer = nil
-            stopped()
-        }
-    }
-
-    deinit {
-        stop()
-    }
-}
+import BTCTracker
 
 final class TimerInfraTests: XCTestCase {
 
