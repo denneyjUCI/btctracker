@@ -21,6 +21,20 @@
                ReferencedContainer = "container:BTCTracker.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "EAA6400D2C991FCA0013D594"
+               BuildableName = "BTCTrackeriOS.framework"
+               BlueprintName = "BTCTrackeriOS"
+               ReferencedContainer = "container:BTCTracker.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -30,7 +44,7 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <TestPlans>
          <TestPlanReference
-            reference = "container:CI.xctestplan"
+            reference = "container:CI_macOS.xctestplan"
             default = "YES">
          </TestPlanReference>
       </TestPlans>

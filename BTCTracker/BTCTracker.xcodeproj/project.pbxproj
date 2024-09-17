@@ -28,7 +28,6 @@
 		EAA6401B2C991FCB0013D594 /* BTCTrackeriOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA6401A2C991FCB0013D594 /* BTCTrackeriOSTests.swift */; };
 		EAA6401C2C991FCB0013D594 /* BTCTrackeriOS.h in Headers */ = {isa = PBXBuildFile; fileRef = EAA640102C991FCA0013D594 /* BTCTrackeriOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EAA640242C991FEF0013D594 /* BTCTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EADC434F2C90BFE0004414F0 /* BTCTracker.framework */; };
-		EAA640252C991FEF0013D594 /* BTCTracker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EADC434F2C90BFE0004414F0 /* BTCTracker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EAD6E6A12C9793CA005EE148 /* CryptoCompareAPIEndToEndTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD6E6A02C9793CA005EE148 /* CryptoCompareAPIEndToEndTests.swift */; };
 		EAD6E6A32C97947F005EE148 /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD6E6A22C97947F005EE148 /* TestHelpers.swift */; };
 		EADC43582C90BFE1004414F0 /* BTCTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EADC434F2C90BFE0004414F0 /* BTCTracker.framework */; };
@@ -68,20 +67,6 @@
 		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		EAA640282C991FEF0013D594 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				EAA640252C991FEF0013D594 /* BTCTracker.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		EA03363B2C9A301D007CDCFB /* Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
 		EA03363E2C9A307E007CDCFB /* TimerInfraTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerInfraTests.swift; sourceTree = "<group>"; };
@@ -103,13 +88,14 @@
 		EAA640102C991FCA0013D594 /* BTCTrackeriOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTCTrackeriOS.h; sourceTree = "<group>"; };
 		EAA640152C991FCB0013D594 /* BTCTrackeriOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BTCTrackeriOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAA6401A2C991FCB0013D594 /* BTCTrackeriOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTCTrackeriOSTests.swift; sourceTree = "<group>"; };
+		EAA6402B2C9926DF0013D594 /* CI_iOS.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = CI_iOS.xctestplan; sourceTree = "<group>"; };
 		EAD6E6A02C9793CA005EE148 /* CryptoCompareAPIEndToEndTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoCompareAPIEndToEndTests.swift; sourceTree = "<group>"; };
 		EAD6E6A22C97947F005EE148 /* TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
 		EADC434F2C90BFE0004414F0 /* BTCTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BTCTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EADC43522C90BFE0004414F0 /* BTCTracker.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTCTracker.h; sourceTree = "<group>"; };
 		EADC43572C90BFE1004414F0 /* BTCTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BTCTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EADC43672C90C733004414F0 /* Exchange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exchange.swift; sourceTree = "<group>"; };
-		EADC43692C90C859004414F0 /* CI.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = CI.xctestplan; sourceTree = "<group>"; };
+		EADC43692C90C859004414F0 /* CI_macOS.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = CI_macOS.xctestplan; sourceTree = "<group>"; };
 		EADC436A2C90CC44004414F0 /* BinanceExchangeMapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinanceExchangeMapperTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -295,7 +281,8 @@
 		EADC43452C90BFE0004414F0 = {
 			isa = PBXGroup;
 			children = (
-				EADC43692C90C859004414F0 /* CI.xctestplan */,
+				EADC43692C90C859004414F0 /* CI_macOS.xctestplan */,
+				EAA6402B2C9926DF0013D594 /* CI_iOS.xctestplan */,
 				EADC43512C90BFE0004414F0 /* BTCTracker */,
 				EADC435B2C90BFE1004414F0 /* BTCTrackerTests */,
 				EA5876012C93A77500CD1C34 /* BTCTrackerAPIEndToEndTests */,
@@ -390,7 +377,6 @@
 				EAA6400A2C991FCA0013D594 /* Sources */,
 				EAA6400B2C991FCA0013D594 /* Frameworks */,
 				EAA6400C2C991FCA0013D594 /* Resources */,
-				EAA640282C991FEF0013D594 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -471,6 +457,7 @@
 					};
 					EAA6400D2C991FCA0013D594 = {
 						CreatedOnToolsVersion = 15.4;
+						LastSwiftMigration = 1540;
 					};
 					EAA640142C991FCB0013D594 = {
 						CreatedOnToolsVersion = 15.4;
@@ -637,8 +624,11 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.distiil.BTCTrackerAPIEndToEndTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -651,8 +641,11 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.distiil.BTCTrackerAPIEndToEndTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -660,6 +653,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -683,8 +677,13 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -694,6 +693,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -717,6 +717,10 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_VERSION = 5.0;
@@ -736,6 +740,10 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.distiil.BTCTrackeriOSTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -753,6 +761,10 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.distiil.BTCTrackeriOSTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -912,10 +924,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.distiil.BTCTracker;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -947,9 +962,12 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.distiil.BTCTracker;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
