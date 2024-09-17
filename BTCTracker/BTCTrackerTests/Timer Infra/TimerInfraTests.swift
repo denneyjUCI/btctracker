@@ -4,9 +4,12 @@ final class FoundationTimer {
     private let hertz: Int
     private var timer: Timer?
     private let tick: () -> Void
-    init(hertz: Int = 1, tick: @escaping () -> Void = {}) {
+    private let stopped: () -> Void
+
+    init(hertz: Int = 1, tick: @escaping () -> Void = {}, stopped: @escaping () -> Void) {
         self.hertz = hertz
         self.tick = tick
+        self.stopped = stopped
     }
 
     func start() {
@@ -19,11 +22,15 @@ final class FoundationTimer {
     }
 
     func stop() {
-
+        if let timer = timer {
+            timer.invalidate()
+            self.timer = nil
+            stopped()
+        }
     }
 
     deinit {
-        timer?.invalidate()
+        stop()
     }
 }
 
@@ -64,14 +71,31 @@ final class TimerInfraTests: XCTestCase {
         XCTAssertEqual(tickCount, 0)
     }
 
+    func test_stop_afterStart_doesNotSendTick() {
+        var tickCount = 0
+        let stopped = expectation(description: "wait for stop")
+        let hertz = 10000
+        let sut = makeSUT(hertz: hertz, tick: {
+            tickCount += 1
+        }, stopped: stopped.fulfill)
+
+        sut.start()
+        sut.stop()
+
+        wait(for: [stopped], timeout: 0.05)
+
+        XCTAssertEqual(tickCount, 1)
+    }
+
     // MARK: - Helpers
     private func makeSUT(
         hertz: Int = 1000,
         tick: @escaping () -> Void,
+        stopped: @escaping () -> Void = { },
         file: StaticString = #filePath,
         line: UInt = #line
     ) -> FoundationTimer {
-        let sut = FoundationTimer(hertz: hertz, tick: tick)
+        let sut = FoundationTimer(hertz: hertz, tick: tick, stopped: stopped)
         trackForMemoryLeaks(sut, file: file, line: line)
         return sut
     }
