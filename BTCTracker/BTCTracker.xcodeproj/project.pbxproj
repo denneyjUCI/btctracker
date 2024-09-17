@@ -24,6 +24,11 @@
 		EA5AABED2C9645DD00B30258 /* ExchangePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5AABEC2C9645DD00B30258 /* ExchangePresenterTests.swift */; };
 		EA5AABEF2C9654AB00B30258 /* ExchangePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5AABEE2C9654AB00B30258 /* ExchangePresenter.swift */; };
 		EA5AABF22C96550700B30258 /* ExchangeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5AABF12C96550700B30258 /* ExchangeViewModel.swift */; };
+		EAA640162C991FCB0013D594 /* BTCTrackeriOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA6400E2C991FCA0013D594 /* BTCTrackeriOS.framework */; };
+		EAA6401B2C991FCB0013D594 /* BTCTrackeriOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA6401A2C991FCB0013D594 /* BTCTrackeriOSTests.swift */; };
+		EAA6401C2C991FCB0013D594 /* BTCTrackeriOS.h in Headers */ = {isa = PBXBuildFile; fileRef = EAA640102C991FCA0013D594 /* BTCTrackeriOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EAA640242C991FEF0013D594 /* BTCTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EADC434F2C90BFE0004414F0 /* BTCTracker.framework */; };
+		EAA640252C991FEF0013D594 /* BTCTracker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EADC434F2C90BFE0004414F0 /* BTCTracker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EAD6E6A12C9793CA005EE148 /* CryptoCompareAPIEndToEndTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD6E6A02C9793CA005EE148 /* CryptoCompareAPIEndToEndTests.swift */; };
 		EAD6E6A32C97947F005EE148 /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD6E6A22C97947F005EE148 /* TestHelpers.swift */; };
 		EADC43582C90BFE1004414F0 /* BTCTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EADC434F2C90BFE0004414F0 /* BTCTracker.framework */; };
@@ -40,6 +45,20 @@
 			remoteGlobalIDString = EADC434E2C90BFE0004414F0;
 			remoteInfo = BTCTracker;
 		};
+		EAA640172C991FCB0013D594 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EADC43462C90BFE0004414F0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EAA6400D2C991FCA0013D594;
+			remoteInfo = BTCTrackeriOS;
+		};
+		EAA640262C991FEF0013D594 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EADC43462C90BFE0004414F0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EADC434E2C90BFE0004414F0;
+			remoteInfo = BTCTracker;
+		};
 		EADC43592C90BFE1004414F0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = EADC43462C90BFE0004414F0 /* Project object */;
@@ -48,6 +67,20 @@
 			remoteInfo = BTCTracker;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		EAA640282C991FEF0013D594 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				EAA640252C991FEF0013D594 /* BTCTracker.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		EA03363B2C9A301D007CDCFB /* Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
@@ -66,6 +99,10 @@
 		EA5AABEC2C9645DD00B30258 /* ExchangePresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangePresenterTests.swift; sourceTree = "<group>"; };
 		EA5AABEE2C9654AB00B30258 /* ExchangePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangePresenter.swift; sourceTree = "<group>"; };
 		EA5AABF12C96550700B30258 /* ExchangeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeViewModel.swift; sourceTree = "<group>"; };
+		EAA6400E2C991FCA0013D594 /* BTCTrackeriOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BTCTrackeriOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EAA640102C991FCA0013D594 /* BTCTrackeriOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTCTrackeriOS.h; sourceTree = "<group>"; };
+		EAA640152C991FCB0013D594 /* BTCTrackeriOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BTCTrackeriOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EAA6401A2C991FCB0013D594 /* BTCTrackeriOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTCTrackeriOSTests.swift; sourceTree = "<group>"; };
 		EAD6E6A02C9793CA005EE148 /* CryptoCompareAPIEndToEndTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoCompareAPIEndToEndTests.swift; sourceTree = "<group>"; };
 		EAD6E6A22C97947F005EE148 /* TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
 		EADC434F2C90BFE0004414F0 /* BTCTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BTCTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -82,6 +119,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA5876042C93A77500CD1C34 /* BTCTracker.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EAA6400B2C991FCA0013D594 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EAA640242C991FEF0013D594 /* BTCTracker.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EAA640122C991FCB0013D594 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EAA640162C991FCB0013D594 /* BTCTrackeriOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,6 +269,29 @@
 			path = "Exchange Presentation";
 			sourceTree = "<group>";
 		};
+		EAA6400F2C991FCA0013D594 /* BTCTrackeriOS */ = {
+			isa = PBXGroup;
+			children = (
+				EAA640102C991FCA0013D594 /* BTCTrackeriOS.h */,
+			);
+			path = BTCTrackeriOS;
+			sourceTree = "<group>";
+		};
+		EAA640192C991FCB0013D594 /* BTCTrackeriOSTests */ = {
+			isa = PBXGroup;
+			children = (
+				EAA6401A2C991FCB0013D594 /* BTCTrackeriOSTests.swift */,
+			);
+			path = BTCTrackeriOSTests;
+			sourceTree = "<group>";
+		};
+		EAA640232C991FEF0013D594 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		EADC43452C90BFE0004414F0 = {
 			isa = PBXGroup;
 			children = (
@@ -223,7 +299,10 @@
 				EADC43512C90BFE0004414F0 /* BTCTracker */,
 				EADC435B2C90BFE1004414F0 /* BTCTrackerTests */,
 				EA5876012C93A77500CD1C34 /* BTCTrackerAPIEndToEndTests */,
+				EAA6400F2C991FCA0013D594 /* BTCTrackeriOS */,
+				EAA640192C991FCB0013D594 /* BTCTrackeriOSTests */,
 				EADC43502C90BFE0004414F0 /* Products */,
+				EAA640232C991FEF0013D594 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -233,6 +312,8 @@
 				EADC434F2C90BFE0004414F0 /* BTCTracker.framework */,
 				EADC43572C90BFE1004414F0 /* BTCTrackerTests.xctest */,
 				EA5876002C93A77500CD1C34 /* BTCTrackerAPIEndToEndTests.xctest */,
+				EAA6400E2C991FCA0013D594 /* BTCTrackeriOS.framework */,
+				EAA640152C991FCB0013D594 /* BTCTrackeriOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -264,6 +345,14 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		EAA640092C991FCA0013D594 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EAA6401C2C991FCB0013D594 /* BTCTrackeriOS.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EADC434A2C90BFE0004414F0 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -291,6 +380,44 @@
 			name = BTCTrackerAPIEndToEndTests;
 			productName = BTCTrackerAPIEndToEndTests;
 			productReference = EA5876002C93A77500CD1C34 /* BTCTrackerAPIEndToEndTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		EAA6400D2C991FCA0013D594 /* BTCTrackeriOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EAA640212C991FCB0013D594 /* Build configuration list for PBXNativeTarget "BTCTrackeriOS" */;
+			buildPhases = (
+				EAA640092C991FCA0013D594 /* Headers */,
+				EAA6400A2C991FCA0013D594 /* Sources */,
+				EAA6400B2C991FCA0013D594 /* Frameworks */,
+				EAA6400C2C991FCA0013D594 /* Resources */,
+				EAA640282C991FEF0013D594 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EAA640272C991FEF0013D594 /* PBXTargetDependency */,
+			);
+			name = BTCTrackeriOS;
+			productName = BTCTrackeriOS;
+			productReference = EAA6400E2C991FCA0013D594 /* BTCTrackeriOS.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		EAA640142C991FCB0013D594 /* BTCTrackeriOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EAA640222C991FCB0013D594 /* Build configuration list for PBXNativeTarget "BTCTrackeriOSTests" */;
+			buildPhases = (
+				EAA640112C991FCB0013D594 /* Sources */,
+				EAA640122C991FCB0013D594 /* Frameworks */,
+				EAA640132C991FCB0013D594 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EAA640182C991FCB0013D594 /* PBXTargetDependency */,
+			);
+			name = BTCTrackeriOSTests;
+			productName = BTCTrackeriOSTests;
+			productReference = EAA640152C991FCB0013D594 /* BTCTrackeriOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		EADC434E2C90BFE0004414F0 /* BTCTracker */ = {
@@ -342,6 +469,12 @@
 					EA5875FF2C93A77500CD1C34 = {
 						CreatedOnToolsVersion = 15.4;
 					};
+					EAA6400D2C991FCA0013D594 = {
+						CreatedOnToolsVersion = 15.4;
+					};
+					EAA640142C991FCB0013D594 = {
+						CreatedOnToolsVersion = 15.4;
+					};
 					EADC434E2C90BFE0004414F0 = {
 						CreatedOnToolsVersion = 15.4;
 						LastSwiftMigration = 1540;
@@ -368,12 +501,28 @@
 				EADC434E2C90BFE0004414F0 /* BTCTracker */,
 				EADC43562C90BFE1004414F0 /* BTCTrackerTests */,
 				EA5875FF2C93A77500CD1C34 /* BTCTrackerAPIEndToEndTests */,
+				EAA6400D2C991FCA0013D594 /* BTCTrackeriOS */,
+				EAA640142C991FCB0013D594 /* BTCTrackeriOSTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		EA5875FE2C93A77500CD1C34 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EAA6400C2C991FCA0013D594 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EAA640132C991FCB0013D594 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -405,6 +554,21 @@
 				EA5AABEA2C9643B100B30258 /* SharedTestHelpers.swift in Sources */,
 				EA58760A2C93A77E00CD1C34 /* BinanceAPIEndToEndTests.swift in Sources */,
 				EAD6E6A32C97947F005EE148 /* TestHelpers.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EAA6400A2C991FCA0013D594 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EAA640112C991FCB0013D594 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EAA6401B2C991FCB0013D594 /* BTCTrackeriOSTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -446,6 +610,16 @@
 			target = EADC434E2C90BFE0004414F0 /* BTCTracker */;
 			targetProxy = EA5876052C93A77500CD1C34 /* PBXContainerItemProxy */;
 		};
+		EAA640182C991FCB0013D594 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EAA6400D2C991FCA0013D594 /* BTCTrackeriOS */;
+			targetProxy = EAA640172C991FCB0013D594 /* PBXContainerItemProxy */;
+		};
+		EAA640272C991FEF0013D594 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EADC434E2C90BFE0004414F0 /* BTCTracker */;
+			targetProxy = EAA640262C991FEF0013D594 /* PBXContainerItemProxy */;
+		};
 		EADC435A2C90BFE1004414F0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = EADC434E2C90BFE0004414F0 /* BTCTracker */;
@@ -479,6 +653,110 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		EAA6401D2C991FCB0013D594 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = com.distiil.BTCTrackeriOS;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EAA6401E2C991FCB0013D594 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				MODULE_VERIFIER_SUPPORTED_LANGUAGES = "objective-c objective-c++";
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu17 gnu++20";
+				PRODUCT_BUNDLE_IDENTIFIER = com.distiil.BTCTrackeriOS;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EAA6401F2C991FCB0013D594 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.distiil.BTCTrackeriOSTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		EAA640202C991FCB0013D594 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.distiil.BTCTrackeriOSTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
@@ -718,6 +996,24 @@
 			buildConfigurations = (
 				EA5876082C93A77500CD1C34 /* Debug */,
 				EA5876092C93A77500CD1C34 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EAA640212C991FCB0013D594 /* Build configuration list for PBXNativeTarget "BTCTrackeriOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EAA6401D2C991FCB0013D594 /* Debug */,
+				EAA6401E2C991FCB0013D594 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EAA640222C991FCB0013D594 /* Build configuration list for PBXNativeTarget "BTCTrackeriOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EAA6401F2C991FCB0013D594 /* Debug */,
+				EAA640202C991FCB0013D594 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
