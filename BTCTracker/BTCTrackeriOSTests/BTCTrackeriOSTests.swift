@@ -8,8 +8,22 @@
 import XCTest
 @testable import BTCTrackeriOS
 
+class ExchangeViewController {
+
+}
+
 final class BTCTrackeriOSTests: XCTestCase {
 
-    
+    func test_init_doesNotRequestExchangeRate() {
+        let loader = LoaderSpy()
+        let _ = ExchangeViewController()
+
+        XCTAssertEqual(loader.loadCount, 0)
+    }
+
+    // MARK: - Helpers
+    private class LoaderSpy {
+        let loadCount = 0
+    }
 
 }
