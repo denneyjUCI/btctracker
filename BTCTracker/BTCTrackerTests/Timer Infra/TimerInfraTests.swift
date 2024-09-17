@@ -18,6 +18,10 @@ final class FoundationTimer {
         tick()
     }
 
+    func stop() {
+
+    }
+
     deinit {
         timer?.invalidate()
     }
@@ -50,6 +54,14 @@ final class TimerInfraTests: XCTestCase {
         sut.start()
 
         wait(for: [exp], timeout: Double(exp.expectedFulfillmentCount) / Double(hertz) + 0.05)
+    }
+
+    func test_stop_doesNotSendTick() {
+        var tickCount = 0
+        let sut = makeSUT(tick: { tickCount += 1 })
+        sut.stop()
+
+        XCTAssertEqual(tickCount, 0)
     }
 
     // MARK: - Helpers
