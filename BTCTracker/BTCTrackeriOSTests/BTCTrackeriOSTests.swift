@@ -9,53 +9,51 @@ import XCTest
 @testable import BTCTrackeriOS
 
 class ExchangeViewController: UIViewController {
-    private var loader: BTCTrackeriOSTests.LoaderSpy!
-    convenience init(loader: BTCTrackeriOSTests.LoaderSpy) {
+    private var timer: BTCTrackeriOSTests.TimerSpy!
+    convenience init(timer: BTCTrackeriOSTests.TimerSpy) {
         self.init()
 
-        self.loader = loader
+        self.timer = timer
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        loader.load()
+        timer.start()
     }
-
-
 }
 
 final class BTCTrackeriOSTests: XCTestCase {
 
     func test_init_doesNotRequestExchangeRate() {
-        let (_, loader) = makeSUT()
+        let (_, timer) = makeSUT()
 
-        XCTAssertEqual(loader.loadCount, 0)
+        XCTAssertEqual(timer.startCount, 0)
     }
 
     func test_viewDidLoad_requestsExchangeRates() {
-        let (sut, loader) = makeSUT()
+        let (sut, timer) = makeSUT()
 
         sut.loadViewIfNeeded()
 
-        XCTAssertEqual(loader.loadCount, 1)
+        XCTAssertEqual(timer.startCount, 1)
     }
 
     // MARK: - Helpers
-    func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (sut: ExchangeViewController, loader: LoaderSpy) {
-        let loader = LoaderSpy()
-        let sut = ExchangeViewController(loader: loader)
-        trackForMemoryLeaks(loader, file: file, line: line)
+    func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (sut: ExchangeViewController, timer: TimerSpy) {
+        let timer = TimerSpy()
+        let sut = ExchangeViewController(timer: timer)
+        trackForMemoryLeaks(timer, file: file, line: line)
         trackForMemoryLeaks(sut, file: file, line: line)
-        return (sut, loader)
+        return (sut, timer)
     }
 
 
-    class LoaderSpy {
-        var loadCount = 0
+    class TimerSpy {
+        var startCount = 0
 
-        func load() {
-            loadCount += 1
+        func start() {
+            startCount += 1
         }
     }
 
