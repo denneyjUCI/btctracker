@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		EA03363C2C9A301D007CDCFB /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA03363B2C9A301D007CDCFB /* Timer.swift */; };
+		EA03363F2C9A307E007CDCFB /* TimerInfraTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA03363E2C9A307E007CDCFB /* TimerInfraTests.swift */; };
 		EA5875CF2C9281E900CD1C34 /* BinanceExchangeMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5875CE2C9281E900CD1C34 /* BinanceExchangeMapper.swift */; };
 		EA5875D42C92824600CD1C34 /* CryptoCompareExchangeMapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5875D32C92824600CD1C34 /* CryptoCompareExchangeMapperTests.swift */; };
 		EA5875D62C92829700CD1C34 /* CryptoCompareExchangeMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5875D52C92829700CD1C34 /* CryptoCompareExchangeMapper.swift */; };
@@ -49,6 +50,7 @@
 
 /* Begin PBXFileReference section */
 		EA03363B2C9A301D007CDCFB /* Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
+		EA03363E2C9A307E007CDCFB /* TimerInfraTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerInfraTests.swift; sourceTree = "<group>"; };
 		EA5875CE2C9281E900CD1C34 /* BinanceExchangeMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinanceExchangeMapper.swift; sourceTree = "<group>"; };
 		EA5875D32C92824600CD1C34 /* CryptoCompareExchangeMapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoCompareExchangeMapperTests.swift; sourceTree = "<group>"; };
 		EA5875D52C92829700CD1C34 /* CryptoCompareExchangeMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoCompareExchangeMapper.swift; sourceTree = "<group>"; };
@@ -105,6 +107,14 @@
 				EA03363B2C9A301D007CDCFB /* Timer.swift */,
 			);
 			path = "Timer Feature";
+			sourceTree = "<group>";
+		};
+		EA03363D2C9A3065007CDCFB /* Timer Infra */ = {
+			isa = PBXGroup;
+			children = (
+				EA03363E2C9A307E007CDCFB /* TimerInfraTests.swift */,
+			);
+			path = "Timer Infra";
 			sourceTree = "<group>";
 		};
 		EA5875D02C92822300CD1C34 /* Exchange API */ = {
@@ -235,6 +245,7 @@
 				EA5AABE82C9643AC00B30258 /* SharedTestHelpers.swift */,
 				EA5875D02C92822300CD1C34 /* Exchange API */,
 				EA5AABEB2C9645C200B30258 /* Exchange Presentation */,
+				EA03363D2C9A3065007CDCFB /* Timer Infra */,
 			);
 			path = BTCTrackerTests;
 			sourceTree = "<group>";
@@ -411,6 +422,7 @@
 				EADC436B2C90CC44004414F0 /* BinanceExchangeMapperTests.swift in Sources */,
 				EA5AABED2C9645DD00B30258 /* ExchangePresenterTests.swift in Sources */,
 				EA5875F32C93717E00CD1C34 /* URLSessionHTTPClientTests.swift in Sources */,
+				EA03363F2C9A307E007CDCFB /* TimerInfraTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
