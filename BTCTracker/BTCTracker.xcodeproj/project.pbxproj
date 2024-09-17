@@ -28,6 +28,7 @@
 		EAA6401B2C991FCB0013D594 /* BTCTrackeriOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA6401A2C991FCB0013D594 /* BTCTrackeriOSTests.swift */; };
 		EAA6401C2C991FCB0013D594 /* BTCTrackeriOS.h in Headers */ = {isa = PBXBuildFile; fileRef = EAA640102C991FCA0013D594 /* BTCTrackeriOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EAA640242C991FEF0013D594 /* BTCTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EADC434F2C90BFE0004414F0 /* BTCTracker.framework */; };
+		EAA6402E2C992B520013D594 /* SharedTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5AABE82C9643AC00B30258 /* SharedTestHelpers.swift */; };
 		EAD6E6A12C9793CA005EE148 /* CryptoCompareAPIEndToEndTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD6E6A02C9793CA005EE148 /* CryptoCompareAPIEndToEndTests.swift */; };
 		EAD6E6A32C97947F005EE148 /* TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD6E6A22C97947F005EE148 /* TestHelpers.swift */; };
 		EADC43582C90BFE1004414F0 /* BTCTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EADC434F2C90BFE0004414F0 /* BTCTracker.framework */; };
@@ -557,6 +558,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAA6402E2C992B520013D594 /* SharedTestHelpers.swift in Sources */,
 				EAA6401B2C991FCB0013D594 /* BTCTrackeriOSTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
