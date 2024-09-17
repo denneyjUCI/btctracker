@@ -38,7 +38,7 @@ final class ExchangePresenterTests: XCTestCase {
         ])
     }
 
-    func test_didFinishLoadingWithError_stopsLoadingAndDisplaysErrorAndLastUpdatedData() {
+    func test_didFinishLoadingWithError_stopsLoadingAndDisplaysError() {
         let (sut, view) = makeSUT()
 
         sut.didFinishLoading(with: anyNSError())
