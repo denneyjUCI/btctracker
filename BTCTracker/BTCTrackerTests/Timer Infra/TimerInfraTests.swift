@@ -19,16 +19,15 @@ final class FoundationTimer {
 final class TimerInfraTests: XCTestCase {
 
     func test_init_doesNotSendTick() {
-        let tickCount = 0
-
-        let _ = FoundationTimer()
+        var tickCount = 0
+        let _ = makeSUT(tick: { tickCount += 1 })
 
         XCTAssertEqual(tickCount, 0)
     }
 
     func test_start_sendsTick() {
         var tickCount = 0
-        let sut = FoundationTimer(tick: { tickCount += 1 })
+        let sut = makeSUT(tick: { tickCount += 1 })
 
         sut.start()
 
@@ -40,7 +39,7 @@ final class TimerInfraTests: XCTestCase {
         let exp = expectation(description: "wait for tick")
         exp.expectedFulfillmentCount = 2
 
-        let sut = FoundationTimer(hertz: 1000, tick: {
+        let sut = makeSUT(hertz: 1000, tick: {
             tickCount += 1
             exp.fulfill()
         })
@@ -49,6 +48,17 @@ final class TimerInfraTests: XCTestCase {
         wait(for: [exp], timeout: 0.1)
 
         XCTAssertEqual(tickCount, 2)
+    }
+
+    // MARK: - Helpers
+    private func makeSUT(
+        hertz: Int = 1000,
+        tick: @escaping () -> Void,
+        file: StaticString = #filePath,
+        line: UInt = #line
+    ) -> FoundationTimer {
+        let sut = FoundationTimer(hertz: hertz, tick: tick)
+        return sut
     }
 
 }
