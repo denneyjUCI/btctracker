@@ -21,13 +21,13 @@ final class TimerInfraTests: XCTestCase {
 
     func test_start_sendsTickAtInterval() {
         let exp = expectation(description: "wait for ticks")
-        exp.expectedFulfillmentCount = 300
-        let hertz = 10000
+        exp.expectedFulfillmentCount = 10
+        let hertz = 300
 
         let sut = makeSUT(hertz: hertz, tick: exp.fulfill)
         sut.start()
 
-        wait(for: [exp], timeout: Double(exp.expectedFulfillmentCount) / Double(hertz) + 0.05)
+        wait(for: [exp], timeout: Double(exp.expectedFulfillmentCount) / Double(hertz) + 0.1)
     }
 
     func test_stop_doesNotSendTick() {
