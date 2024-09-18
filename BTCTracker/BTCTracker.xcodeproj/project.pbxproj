@@ -71,6 +71,7 @@
 		EA03363B2C9A301D007CDCFB /* Timer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
 		EA03363E2C9A307E007CDCFB /* TimerInfraTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerInfraTests.swift; sourceTree = "<group>"; };
 		EA0336412C9A3F37007CDCFB /* FoundationTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationTimer.swift; sourceTree = "<group>"; };
+		EA0336432C9B6CEA007CDCFB /* BTCTrackeriOS.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = BTCTrackeriOS.xctestplan; path = BTCTrackeriOSTests/BTCTrackeriOS.xctestplan; sourceTree = "<group>"; };
 		EA5875CE2C9281E900CD1C34 /* BinanceExchangeMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinanceExchangeMapper.swift; sourceTree = "<group>"; };
 		EA5875D32C92824600CD1C34 /* CryptoCompareExchangeMapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoCompareExchangeMapperTests.swift; sourceTree = "<group>"; };
 		EA5875D52C92829700CD1C34 /* CryptoCompareExchangeMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoCompareExchangeMapper.swift; sourceTree = "<group>"; };
@@ -281,6 +282,7 @@
 		EADC43452C90BFE0004414F0 = {
 			isa = PBXGroup;
 			children = (
+				EA0336432C9B6CEA007CDCFB /* BTCTrackeriOS.xctestplan */,
 				EADC43692C90C859004414F0 /* CI_macOS.xctestplan */,
 				EAA6402B2C9926DF0013D594 /* CI_iOS.xctestplan */,
 				EADC43512C90BFE0004414F0 /* BTCTracker */,
