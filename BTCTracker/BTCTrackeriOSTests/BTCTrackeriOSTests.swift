@@ -14,17 +14,18 @@ class ExchangeViewController: UIViewController {
     let valueLabel = UILabel()
     let errorLabel = UILabel()
 
-    private var timer: BTCTrackeriOSTests.TimerSpy!
-    convenience init(timer: BTCTrackeriOSTests.TimerSpy) {
+    private var onViewLoad: (() -> Void)!
+
+    convenience init(onViewLoad: @escaping () -> Void) {
         self.init()
 
-        self.timer = timer
+        self.onViewLoad = onViewLoad
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        timer.start()
+        onViewLoad()
     }
 
     func display(error: String) {
@@ -78,7 +79,7 @@ final class BTCTrackeriOSTests: XCTestCase {
     // MARK: - Helpers
     func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (sut: ExchangeViewController, timer: TimerSpy) {
         let timer = TimerSpy()
-        let sut = ExchangeViewController(timer: timer)
+        let sut = ExchangeViewController(onViewLoad: timer.start)
         trackForMemoryLeaks(timer, file: file, line: line)
         trackForMemoryLeaks(sut, file: file, line: line)
         return (sut, timer)
