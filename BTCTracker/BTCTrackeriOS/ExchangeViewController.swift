@@ -11,6 +11,7 @@ import BTCTracker
 public class ExchangeViewController: UIViewController {
 
     public let valueLabel = UILabel()
+    public let symbolLabel = UILabel()
     public let errorLabel = UILabel()
 
     private var onViewLoad: (() -> Void)!
@@ -33,6 +34,7 @@ public class ExchangeViewController: UIViewController {
 
     public func display(_ exchange: Exchange) {
         valueLabel.text = "\(exchange.rate)"
+        symbolLabel.text = "\(exchange.symbol)"
         errorLabel.text = nil
     }
 
