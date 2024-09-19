@@ -25,7 +25,7 @@
 		EA5AABEF2C9654AB00B30258 /* ExchangePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5AABEE2C9654AB00B30258 /* ExchangePresenter.swift */; };
 		EA5AABF22C96550700B30258 /* ExchangeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5AABF12C96550700B30258 /* ExchangeViewModel.swift */; };
 		EAA640162C991FCB0013D594 /* BTCTrackeriOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA6400E2C991FCA0013D594 /* BTCTrackeriOS.framework */; };
-		EAA6401B2C991FCB0013D594 /* BTCTrackeriOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA6401A2C991FCB0013D594 /* BTCTrackeriOSTests.swift */; };
+		EAA6401B2C991FCB0013D594 /* ExchangeViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA6401A2C991FCB0013D594 /* ExchangeViewControllerTests.swift */; };
 		EAA6401C2C991FCB0013D594 /* BTCTrackeriOS.h in Headers */ = {isa = PBXBuildFile; fileRef = EAA640102C991FCA0013D594 /* BTCTrackeriOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EAA640242C991FEF0013D594 /* BTCTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EADC434F2C90BFE0004414F0 /* BTCTracker.framework */; };
 		EAA6402E2C992B520013D594 /* SharedTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5AABE82C9643AC00B30258 /* SharedTestHelpers.swift */; };
@@ -89,7 +89,7 @@
 		EAA6400E2C991FCA0013D594 /* BTCTrackeriOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BTCTrackeriOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAA640102C991FCA0013D594 /* BTCTrackeriOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BTCTrackeriOS.h; sourceTree = "<group>"; };
 		EAA640152C991FCB0013D594 /* BTCTrackeriOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BTCTrackeriOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		EAA6401A2C991FCB0013D594 /* BTCTrackeriOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTCTrackeriOSTests.swift; sourceTree = "<group>"; };
+		EAA6401A2C991FCB0013D594 /* ExchangeViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeViewControllerTests.swift; sourceTree = "<group>"; };
 		EAA6402B2C9926DF0013D594 /* CI_iOS.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = CI_iOS.xctestplan; sourceTree = "<group>"; };
 		EAD6E6A02C9793CA005EE148 /* CryptoCompareAPIEndToEndTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoCompareAPIEndToEndTests.swift; sourceTree = "<group>"; };
 		EAD6E6A22C97947F005EE148 /* TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestHelpers.swift; sourceTree = "<group>"; };
@@ -268,7 +268,7 @@
 		EAA640192C991FCB0013D594 /* BTCTrackeriOSTests */ = {
 			isa = PBXGroup;
 			children = (
-				EAA6401A2C991FCB0013D594 /* BTCTrackeriOSTests.swift */,
+				EAA6401A2C991FCB0013D594 /* ExchangeViewControllerTests.swift */,
 			);
 			path = BTCTrackeriOSTests;
 			sourceTree = "<group>";
@@ -559,7 +559,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAA6402E2C992B520013D594 /* SharedTestHelpers.swift in Sources */,
-				EAA6401B2C991FCB0013D594 /* BTCTrackeriOSTests.swift in Sources */,
+				EAA6401B2C991FCB0013D594 /* ExchangeViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

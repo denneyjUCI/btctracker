@@ -1,5 +1,5 @@
 //
-//  BTCTrackeriOSTests.swift
+//  ExchangeViewControllerTests.swift
 //  BTCTrackeriOSTests
 //
 //  Created by Jonathan Denney on 9/16/24.
@@ -39,7 +39,7 @@ class ExchangeViewController: UIViewController {
 
 }
 
-final class BTCTrackeriOSTests: XCTestCase {
+final class ExchangeViewControllerTests: XCTestCase {
 
     func test_init_doesNotRequestExchangeRate() {
         let (_, timer) = makeSUT()
