@@ -6,10 +6,12 @@
 //
 
 import XCTest
-@testable import BTCTrackeriOS
+import BTCTracker
+import BTCTrackeriOS
 
 class ExchangeViewController: UIViewController {
 
+    let valueLabel = UILabel()
     let errorLabel = UILabel()
 
     private var timer: BTCTrackeriOSTests.TimerSpy!
@@ -23,8 +25,17 @@ class ExchangeViewController: UIViewController {
         super.viewDidLoad()
 
         timer.start()
-        errorLabel.text = "Failed to update value."
     }
+
+    func display(error: String) {
+        errorLabel.text = error
+    }
+
+    func display(_ exchange: Exchange) {
+        valueLabel.text = "\(exchange.rate)"
+        errorLabel.text = nil
+    }
+
 }
 
 final class BTCTrackeriOSTests: XCTestCase {
@@ -43,13 +54,25 @@ final class BTCTrackeriOSTests: XCTestCase {
         XCTAssertEqual(timer.startCount, 1)
     }
 
-    func test_viewDidLoad_onError_rendersErrorMessage() {
-        let (sut, timer) = makeSUT()
+    func test_viewDidLoad_rendersLastSuccessfulResponse() {
+        let (sut, _) = makeSUT()
         sut.loadViewIfNeeded()
 
-        timer.completeLoadWithError()
+        sut.display(error: "error message")
+        XCTAssertEqual(sut.errorLabel.text, "error message")
+        XCTAssertNil(sut.valueLabel.text, "Expected no value on first error")
 
-        XCTAssertEqual(sut.errorLabel.text, "Failed to update value.")
+        sut.display(Exchange(symbol: "a symbol", rate: 100))
+        XCTAssertNil(sut.errorLabel.text, "Expected no error after success")
+        XCTAssertEqual(sut.valueLabel.text, "100.0", "Expected value after success")
+
+        sut.display(error: "error message")
+        XCTAssertEqual(sut.errorLabel.text, "error message")
+        XCTAssertEqual(sut.valueLabel.text, "100.0", "Expected value to still be shown after error")
+
+        sut.display(Exchange(symbol: "symbol", rate: 200))
+        XCTAssertNil(sut.errorLabel.text, "Expected no error after success")
+        XCTAssertEqual(sut.valueLabel.text, "200.0", "Expected new value after success")
     }
 
     // MARK: - Helpers
@@ -67,10 +90,6 @@ final class BTCTrackeriOSTests: XCTestCase {
 
         func start() {
             startCount += 1
-        }
-
-        func completeLoadWithError() {
-
         }
     }
 
