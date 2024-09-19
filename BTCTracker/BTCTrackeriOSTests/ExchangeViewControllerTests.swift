@@ -9,36 +9,6 @@ import XCTest
 import BTCTracker
 import BTCTrackeriOS
 
-class ExchangeViewController: UIViewController {
-
-    let valueLabel = UILabel()
-    let errorLabel = UILabel()
-
-    private var onViewLoad: (() -> Void)!
-
-    convenience init(onViewLoad: @escaping () -> Void) {
-        self.init()
-
-        self.onViewLoad = onViewLoad
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        onViewLoad()
-    }
-
-    func display(error: String) {
-        errorLabel.text = error
-    }
-
-    func display(_ exchange: Exchange) {
-        valueLabel.text = "\(exchange.rate)"
-        errorLabel.text = nil
-    }
-
-}
-
 final class ExchangeViewControllerTests: XCTestCase {
 
     func test_init_doesNotRequestExchangeRate() {
