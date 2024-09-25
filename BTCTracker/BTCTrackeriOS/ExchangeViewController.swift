@@ -21,15 +21,18 @@ public enum ExchangeUIComposer {
 
 public class ExchangeViewController: UIViewController {
 
-    public let valueLabel = UILabel()
-    public let symbolLabel = UILabel()
-    public let errorLabel = UILabel()
+    @IBOutlet public private(set) var symbolLabel: UILabel!
+    @IBOutlet public private(set) var valueLabel: UILabel!
+    @IBOutlet public private(set) var errorLabel: UILabel!
 
     var onViewLoad: (() -> Void)!
 
     public override func viewDidLoad() {
         super.viewDidLoad()
 
+        valueLabel.text = nil
+        symbolLabel.text = "-"
+        errorLabel.text = nil
         onViewLoad()
     }
 

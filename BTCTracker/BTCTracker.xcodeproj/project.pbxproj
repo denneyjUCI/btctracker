@@ -36,6 +36,10 @@
 		EADC435E2C90BFE1004414F0 /* BTCTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = EADC43522C90BFE0004414F0 /* BTCTracker.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EADC43682C90C733004414F0 /* Exchange.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADC43672C90C733004414F0 /* Exchange.swift */; };
 		EADC436B2C90CC44004414F0 /* BinanceExchangeMapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADC436A2C90CC44004414F0 /* BinanceExchangeMapperTests.swift */; };
+		EAE66FC92CA4528F00CD5F56 /* ExchangeViewControllerSnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE66FC82CA4528F00CD5F56 /* ExchangeViewControllerSnapshotTests.swift */; };
+		EAE66FCC2CA4531700CD5F56 /* EMPTY_LIGHT.png in Resources */ = {isa = PBXBuildFile; fileRef = EAE66FCA2CA4531700CD5F56 /* EMPTY_LIGHT.png */; };
+		EAE66FCE2CA453C000CD5F56 /* EMPTY_DARK.png in Resources */ = {isa = PBXBuildFile; fileRef = EAE66FCD2CA453C000CD5F56 /* EMPTY_DARK.png */; };
+		EAE66FD02CA4542500CD5F56 /* Exchange.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAE66FCF2CA4542500CD5F56 /* Exchange.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +105,10 @@
 		EADC43672C90C733004414F0 /* Exchange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exchange.swift; sourceTree = "<group>"; };
 		EADC43692C90C859004414F0 /* CI_macOS.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = CI_macOS.xctestplan; sourceTree = "<group>"; };
 		EADC436A2C90CC44004414F0 /* BinanceExchangeMapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinanceExchangeMapperTests.swift; sourceTree = "<group>"; };
+		EAE66FC82CA4528F00CD5F56 /* ExchangeViewControllerSnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeViewControllerSnapshotTests.swift; sourceTree = "<group>"; };
+		EAE66FCA2CA4531700CD5F56 /* EMPTY_LIGHT.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EMPTY_LIGHT.png; sourceTree = "<group>"; };
+		EAE66FCD2CA453C000CD5F56 /* EMPTY_DARK.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EMPTY_DARK.png; sourceTree = "<group>"; };
+		EAE66FCF2CA4542500CD5F56 /* Exchange.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Exchange.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -264,6 +272,7 @@
 			children = (
 				EAA640102C991FCA0013D594 /* BTCTrackeriOS.h */,
 				EA0336442C9C870F007CDCFB /* ExchangeViewController.swift */,
+				EAE66FCF2CA4542500CD5F56 /* Exchange.storyboard */,
 			);
 			path = BTCTrackeriOS;
 			sourceTree = "<group>";
@@ -272,6 +281,8 @@
 			isa = PBXGroup;
 			children = (
 				EAA6401A2C991FCB0013D594 /* ExchangeViewControllerTests.swift */,
+				EAE66FC82CA4528F00CD5F56 /* ExchangeViewControllerSnapshotTests.swift */,
+				EAE66FCB2CA4531700CD5F56 /* snapshots */,
 			);
 			path = BTCTrackeriOSTests;
 			sourceTree = "<group>";
@@ -333,6 +344,15 @@
 				EA03363D2C9A3065007CDCFB /* Timer Infra */,
 			);
 			path = BTCTrackerTests;
+			sourceTree = "<group>";
+		};
+		EAE66FCB2CA4531700CD5F56 /* snapshots */ = {
+			isa = PBXGroup;
+			children = (
+				EAE66FCD2CA453C000CD5F56 /* EMPTY_DARK.png */,
+				EAE66FCA2CA4531700CD5F56 /* EMPTY_LIGHT.png */,
+			);
+			path = snapshots;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -512,6 +532,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAE66FD02CA4542500CD5F56 /* Exchange.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -519,6 +540,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAE66FCC2CA4531700CD5F56 /* EMPTY_LIGHT.png in Resources */,
+				EAE66FCE2CA453C000CD5F56 /* EMPTY_DARK.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -563,6 +586,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAA6402E2C992B520013D594 /* SharedTestHelpers.swift in Sources */,
+				EAE66FC92CA4528F00CD5F56 /* ExchangeViewControllerSnapshotTests.swift in Sources */,
 				EAA6401B2C991FCB0013D594 /* ExchangeViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
