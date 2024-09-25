@@ -7,15 +7,15 @@
 
 import Foundation
 
-public final class FoundationTimer: Timer {
+public final class FoundationTimer: Stopwatch {
     private let hertz: Int
-    private var timer: Foundation.Timer?
+    private var timer: Timer?
 
     public init(hertz: Int = 1) {
         self.hertz = hertz
     }
 
-    private class TimerTaskWrapper: TimerTask {
+    private class StopwatchTaskWrapper: StopwatchTask {
         let callback: () -> Void
         init(callback: @escaping () -> Void) {
             self.callback = callback
@@ -26,7 +26,7 @@ public final class FoundationTimer: Timer {
         }
     }
 
-    public func start(tick: @escaping () -> Void) -> TimerTask {
+    public func start(tick: @escaping () -> Void) -> StopwatchTask {
         let timer = Foundation.Timer.scheduledTimer(withTimeInterval: 1 / Double(hertz), repeats: true, block: { [tick] _ in
             tick()
         })
@@ -34,10 +34,10 @@ public final class FoundationTimer: Timer {
         self.timer = timer
         tick()
 
-        return TimerTaskWrapper(callback: stop)
+        return StopwatchTaskWrapper(callback: stop)
     }
 
-    public func stop() {
+    private func stop() {
         if let timer = timer {
             timer.invalidate()
             self.timer = nil
