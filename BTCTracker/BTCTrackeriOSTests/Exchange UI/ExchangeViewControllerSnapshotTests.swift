@@ -24,7 +24,7 @@ final class ExchangeViewControllerSnapshotTests: XCTestCase {
         let sut = makeSUT()
         sut.loadViewIfNeeded()
 
-        sut.display(ExchangeViewModel(exchange: .init(symbol: "A_SYMBOL", rate: 200.0)))
+        sut.display(viewModel: ExchangeViewModel(exchange: .init(symbol: "A_SYMBOL", rate: 200.0)))
 
         assert(snapshot: sut.snapshot(for: .iPhone(style: .light)), named: "POPULATED_LIGHT")
         assert(snapshot: sut.snapshot(for: .iPhone(style: .dark)), named: "POPULATED_DARK")
@@ -43,7 +43,7 @@ final class ExchangeViewControllerSnapshotTests: XCTestCase {
     func test_errorAfterPopulation() {
         let sut = makeSUT()
         sut.loadViewIfNeeded()
-        sut.display(ExchangeViewModel(exchange: .init(symbol: "A_SYMBOL", rate: 200.0)))
+        sut.display(viewModel: ExchangeViewModel(exchange: .init(symbol: "A_SYMBOL", rate: 200.0)))
         
         sut.display(error: "any error")
 

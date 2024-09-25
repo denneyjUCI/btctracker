@@ -35,12 +35,16 @@ public class ExchangeViewController: UIViewController {
         errorLabel.text = nil
         onViewLoad()
     }
+}
 
-    public func display(error: String) {
+extension ExchangeViewController: ExchangeErrorView {
+    public func display(error: String?) {
         errorLabel.text = error
     }
+}
 
-    public func display(_ exchange: ExchangeViewModel) {
+extension ExchangeViewController: ExchangeView {
+    public func display(viewModel exchange: ExchangeViewModel) {
         valueLabel.text = exchange.price
         symbolLabel.text = exchange.symbol
         errorLabel.text = nil
