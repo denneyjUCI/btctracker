@@ -10,16 +10,14 @@ import Foundation
 public final class FoundationTimer {
     private let hertz: Int
     private var timer: Foundation.Timer?
-    private let tick: () -> Void
     private let stopped: () -> Void
 
-    public init(hertz: Int = 1, tick: @escaping () -> Void = {}, stopped: @escaping () -> Void) {
+    public init(hertz: Int = 1, stopped: @escaping () -> Void) {
         self.hertz = hertz
-        self.tick = tick
         self.stopped = stopped
     }
 
-    public func start() {
+    public func start(tick: @escaping () -> Void) {
         let timer = Foundation.Timer.scheduledTimer(withTimeInterval: 1 / Double(hertz), repeats: true, block: { [tick] _ in
             tick()
         })
