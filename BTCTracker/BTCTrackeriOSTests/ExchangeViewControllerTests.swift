@@ -33,7 +33,7 @@ final class ExchangeViewControllerTests: XCTestCase {
         XCTAssertEqual(sut.errorLabel.text, "error message")
         XCTAssertNil(sut.valueLabel.text, "Expected no value on first error")
 
-        sut.display(ExchangeViewModel(exchange: .init(symbol: "a_symbol", rate: 100)))
+        sut.display(makeViewModel(symbol: "a_symbol", rate: 100))
         XCTAssertNil(sut.errorLabel.text, "Expected no error after success")
         XCTAssertEqual(sut.valueLabel.text, "a_symbol exchange rate is 100.00", "Expected value after success")
 
@@ -41,7 +41,7 @@ final class ExchangeViewControllerTests: XCTestCase {
         XCTAssertEqual(sut.errorLabel.text, "error message")
         XCTAssertEqual(sut.valueLabel.text, "a_symbol exchange rate is 100.00", "Expected value to still be shown after error")
 
-        sut.display(ExchangeViewModel(exchange: .init(symbol: "new_symbol", rate: 200)))
+        sut.display(makeViewModel(symbol: "new_symbol", rate: 200))
         XCTAssertNil(sut.errorLabel.text, "Expected no error after success")
         XCTAssertEqual(sut.valueLabel.text, "new_symbol exchange rate is 200.00", "Expected new value after success")
     }
@@ -53,6 +53,10 @@ final class ExchangeViewControllerTests: XCTestCase {
         trackForMemoryLeaks(timer, file: file, line: line)
         trackForMemoryLeaks(sut, file: file, line: line)
         return (sut, timer)
+    }
+
+    private func makeViewModel(symbol: String, rate: Double) -> ExchangeViewModel {
+        ExchangeViewModel(exchange: .init(symbol: symbol, rate: rate))
     }
 
     class TimerSpy {
