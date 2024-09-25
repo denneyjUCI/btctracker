@@ -6,6 +6,7 @@
 //
 
 import XCTest
+import BTCTracker
 import BTCTrackeriOS
 
 final class ExchangeViewControllerSnapshotTests: XCTestCase {
@@ -17,6 +18,16 @@ final class ExchangeViewControllerSnapshotTests: XCTestCase {
 
         assert(snapshot: sut.snapshot(for: .iPhone(style: .light)), named: "EMPTY_LIGHT")
         assert(snapshot: sut.snapshot(for: .iPhone(style: .dark)), named: "EMPTY_DARK")
+    }
+
+    func test_populated() {
+        let sut = ExchangeUIComposer.exchangeComposedWith(onViewLoad: {})
+        sut.loadViewIfNeeded()
+
+        sut.display(ExchangeViewModel(exchange: .init(symbol: "A_SYMBOL", rate: 200.0)))
+
+        assert(snapshot: sut.snapshot(for: .iPhone(style: .light)), named: "POPULATED_LIGHT")
+        assert(snapshot: sut.snapshot(for: .iPhone(style: .dark)), named: "POPULATED_DARK")
     }
 
 }
