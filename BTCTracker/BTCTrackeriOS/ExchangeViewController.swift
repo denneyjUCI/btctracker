@@ -8,19 +8,24 @@
 import UIKit
 import BTCTracker
 
+public enum ExchangeUIComposer {
+    public static func exchangeComposedWith(onViewLoad: @escaping () -> Void) -> ExchangeViewController {
+        let bundle = Bundle(for: ExchangeViewController.self)
+        let storyboard = UIStoryboard(name: "Exchange", bundle: bundle)
+        let vc = storyboard.instantiateInitialViewController() as! ExchangeViewController
+
+        vc.onViewLoad = onViewLoad
+        return vc
+    }
+}
+
 public class ExchangeViewController: UIViewController {
 
     public let valueLabel = UILabel()
     public let symbolLabel = UILabel()
     public let errorLabel = UILabel()
 
-    private var onViewLoad: (() -> Void)!
-
-    public convenience init(onViewLoad: @escaping () -> Void) {
-        self.init()
-
-        self.onViewLoad = onViewLoad
-    }
+    var onViewLoad: (() -> Void)!
 
     public override func viewDidLoad() {
         super.viewDidLoad()

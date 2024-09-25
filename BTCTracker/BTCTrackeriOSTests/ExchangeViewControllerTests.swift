@@ -52,7 +52,7 @@ final class ExchangeViewControllerTests: XCTestCase {
     // MARK: - Helpers
     func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> (sut: ExchangeViewController, timer: TimerSpy) {
         let timer = TimerSpy()
-        let sut = ExchangeViewController(onViewLoad: timer.start)
+        let sut = ExchangeUIComposer.exchangeComposedWith(onViewLoad: timer.start)
         trackForMemoryLeaks(timer, file: file, line: line)
         trackForMemoryLeaks(sut, file: file, line: line)
         return (sut, timer)
