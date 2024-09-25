@@ -7,7 +7,7 @@ final class TimerInfraTests: XCTestCase {
         var tickCount = 0
         let sut = makeSUT()
 
-        sut.start(tick: { tickCount += 1 })
+        _ = sut.start(tick: { tickCount += 1 })
 
         XCTAssertEqual(tickCount, 1)
     }
@@ -18,18 +18,18 @@ final class TimerInfraTests: XCTestCase {
         let hertz = 300
 
         let sut = makeSUT(hertz: hertz)
-        sut.start(tick: exp.fulfill)
+        _ = sut.start(tick: exp.fulfill)
 
         wait(for: [exp], timeout: Double(exp.expectedFulfillmentCount) / Double(hertz) + 0.1)
     }
 
-    func test_stop_afterStart_doesNotSendTick() {
+    func test_cancel_afterStart_doesNotSendTick() {
         var tickCount = 0
         let stopped = expectation(description: "wait for stop")
         let sut = makeSUT(stopped: stopped.fulfill)
 
-        sut.start(tick: { tickCount += 1 })
-        sut.stop()
+        let cancellable = sut.start(tick: { tickCount += 1 })
+        cancellable.cancel()
 
         wait(for: [stopped], timeout: 0.05)
 
