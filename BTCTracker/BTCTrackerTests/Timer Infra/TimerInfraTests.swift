@@ -36,11 +36,10 @@ final class TimerInfraTests: XCTestCase {
     // MARK: - Helpers
     private func makeSUT(
         hertz: Int = 1000,
-        stopped: @escaping () -> Void = { },
         file: StaticString = #filePath,
         line: UInt = #line
     ) -> FoundationTimer {
-        let sut = FoundationTimer(hertz: hertz, stopped: stopped)
+        let sut = FoundationTimer(hertz: hertz)
         trackForMemoryLeaks(sut, file: file, line: line)
         return sut
     }

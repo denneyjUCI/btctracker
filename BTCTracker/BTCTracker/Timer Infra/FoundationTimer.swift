@@ -10,11 +10,9 @@ import Foundation
 public final class FoundationTimer: Timer {
     private let hertz: Int
     private var timer: Foundation.Timer?
-    private let stopped: () -> Void
 
-    public init(hertz: Int = 1, stopped: @escaping () -> Void) {
+    public init(hertz: Int = 1) {
         self.hertz = hertz
-        self.stopped = stopped
     }
 
     private class TimerTaskWrapper: TimerTask {
@@ -43,7 +41,6 @@ public final class FoundationTimer: Timer {
         if let timer = timer {
             timer.invalidate()
             self.timer = nil
-            stopped()
         }
     }
 
