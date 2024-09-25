@@ -32,9 +32,8 @@ public class ExchangeViewController: UIViewController {
         errorLabel.text = error
     }
 
-    public func display(_ exchange: Exchange) {
-        valueLabel.text = "\(exchange.rate)"
-        symbolLabel.text = "\(exchange.symbol)"
+    public func display(_ exchange: ExchangeViewModel) {
+        valueLabel.text = exchange.message
         errorLabel.text = nil
     }
 
