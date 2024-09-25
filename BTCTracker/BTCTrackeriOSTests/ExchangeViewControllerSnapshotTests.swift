@@ -30,6 +30,27 @@ final class ExchangeViewControllerSnapshotTests: XCTestCase {
         assert(snapshot: sut.snapshot(for: .iPhone(style: .dark)), named: "POPULATED_DARK")
     }
 
+    func test_error() {
+        let sut = ExchangeUIComposer.exchangeComposedWith(onViewLoad: {})
+        sut.loadViewIfNeeded()
+
+        sut.display(error: "any error")
+        
+        assert(snapshot: sut.snapshot(for: .iPhone(style: .light)), named: "ERROR_LIGHT")
+        assert(snapshot: sut.snapshot(for: .iPhone(style: .dark)), named: "ERROR_DARK")
+    }
+
+    func test_errorAfterPopulation() {
+        let sut = ExchangeUIComposer.exchangeComposedWith(onViewLoad: {})
+        sut.loadViewIfNeeded()
+        sut.display(ExchangeViewModel(exchange: .init(symbol: "A_SYMBOL", rate: 200.0)))
+        
+        sut.display(error: "any error")
+
+        assert(snapshot: sut.snapshot(for: .iPhone(style: .light)), named: "ERROR_AFTER_POPULATION_LIGHT")
+        assert(snapshot: sut.snapshot(for: .iPhone(style: .dark)), named: "ERROR_AFTER_POPULATION_DARK")
+    }
+
 }
 
 extension XCTestCase {
