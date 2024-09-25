@@ -283,8 +283,7 @@
 			isa = PBXGroup;
 			children = (
 				EAA640102C991FCA0013D594 /* BTCTrackeriOS.h */,
-				EA0336442C9C870F007CDCFB /* ExchangeViewController.swift */,
-				EAE66FCF2CA4542500CD5F56 /* Exchange.storyboard */,
+				EAE66FDD2CA4604500CD5F56 /* Exchange UI */,
 			);
 			path = BTCTrackeriOS;
 			sourceTree = "<group>";
@@ -292,9 +291,7 @@
 		EAA640192C991FCB0013D594 /* BTCTrackeriOSTests */ = {
 			isa = PBXGroup;
 			children = (
-				EAA6401A2C991FCB0013D594 /* ExchangeViewControllerTests.swift */,
-				EAE66FC82CA4528F00CD5F56 /* ExchangeViewControllerSnapshotTests.swift */,
-				EAE66FCB2CA4531700CD5F56 /* snapshots */,
+				EAE66FDE2CA4605300CD5F56 /* Exchange UI */,
 			);
 			path = BTCTrackeriOSTests;
 			sourceTree = "<group>";
@@ -371,6 +368,25 @@
 				EAE66FCA2CA4531700CD5F56 /* EMPTY_LIGHT.png */,
 			);
 			path = snapshots;
+			sourceTree = "<group>";
+		};
+		EAE66FDD2CA4604500CD5F56 /* Exchange UI */ = {
+			isa = PBXGroup;
+			children = (
+				EA0336442C9C870F007CDCFB /* ExchangeViewController.swift */,
+				EAE66FCF2CA4542500CD5F56 /* Exchange.storyboard */,
+			);
+			path = "Exchange UI";
+			sourceTree = "<group>";
+		};
+		EAE66FDE2CA4605300CD5F56 /* Exchange UI */ = {
+			isa = PBXGroup;
+			children = (
+				EAA6401A2C991FCB0013D594 /* ExchangeViewControllerTests.swift */,
+				EAE66FC82CA4528F00CD5F56 /* ExchangeViewControllerSnapshotTests.swift */,
+				EAE66FCB2CA4531700CD5F56 /* snapshots */,
+			);
+			path = "Exchange UI";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
