@@ -12,7 +12,7 @@ import BTCTrackeriOS
 final class ExchangeViewControllerSnapshotTests: XCTestCase {
 
     func test_initialState() {
-        let sut = ExchangeUIComposer.exchangeComposedWith(onViewLoad: {})
+        let sut = makeSUT()
 
         sut.loadViewIfNeeded()
 
@@ -21,7 +21,7 @@ final class ExchangeViewControllerSnapshotTests: XCTestCase {
     }
 
     func test_populated() {
-        let sut = ExchangeUIComposer.exchangeComposedWith(onViewLoad: {})
+        let sut = makeSUT()
         sut.loadViewIfNeeded()
 
         sut.display(ExchangeViewModel(exchange: .init(symbol: "A_SYMBOL", rate: 200.0)))
@@ -31,7 +31,7 @@ final class ExchangeViewControllerSnapshotTests: XCTestCase {
     }
 
     func test_error() {
-        let sut = ExchangeUIComposer.exchangeComposedWith(onViewLoad: {})
+        let sut = makeSUT()
         sut.loadViewIfNeeded()
 
         sut.display(error: "any error")
@@ -41,7 +41,7 @@ final class ExchangeViewControllerSnapshotTests: XCTestCase {
     }
 
     func test_errorAfterPopulation() {
-        let sut = ExchangeUIComposer.exchangeComposedWith(onViewLoad: {})
+        let sut = makeSUT()
         sut.loadViewIfNeeded()
         sut.display(ExchangeViewModel(exchange: .init(symbol: "A_SYMBOL", rate: 200.0)))
         
@@ -49,6 +49,13 @@ final class ExchangeViewControllerSnapshotTests: XCTestCase {
 
         assert(snapshot: sut.snapshot(for: .iPhone(style: .light)), named: "ERROR_AFTER_POPULATION_LIGHT")
         assert(snapshot: sut.snapshot(for: .iPhone(style: .dark)), named: "ERROR_AFTER_POPULATION_DARK")
+    }
+
+    // MARK: - Helpers
+    private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> ExchangeViewController {
+        let sut = ExchangeUIComposer.exchangeComposedWith(onViewLoad: {})
+        trackForMemoryLeaks(sut, file: file, line: line)
+        return sut
     }
 
 }
