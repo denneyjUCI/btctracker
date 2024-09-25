@@ -7,10 +7,10 @@
 
 import Foundation
 
-public protocol TimerTask {
+public protocol StopwatchTask {
     func cancel()
 }
 
-public protocol Timer {
-    func start(tick: @escaping () -> Void) -> TimerTask
+public protocol Stopwatch {
+    func start(tick: @escaping () -> Void) -> StopwatchTask
 }
