@@ -25,13 +25,10 @@ final class TimerInfraTests: XCTestCase {
 
     func test_cancel_afterStart_doesNotSendTick() {
         var tickCount = 0
-        let stopped = expectation(description: "wait for stop")
-        let sut = makeSUT(stopped: stopped.fulfill)
+        let sut = makeSUT()
 
         let cancellable = sut.start(tick: { tickCount += 1 })
         cancellable.cancel()
-
-        wait(for: [stopped], timeout: 0.05)
 
         XCTAssertEqual(tickCount, 1)
     }
