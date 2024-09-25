@@ -35,15 +35,18 @@ final class ExchangeViewControllerTests: XCTestCase {
 
         sut.display(makeViewModel(symbol: "a_symbol", rate: 100))
         XCTAssertNil(sut.errorLabel.text, "Expected no error after success")
-        XCTAssertEqual(sut.valueLabel.text, "a_symbol exchange rate is 100.00", "Expected value after success")
+        XCTAssertEqual(sut.valueLabel.text, "100.00", "Expected value after success")
+        XCTAssertEqual(sut.symbolLabel.text, "a_symbol", "Expected symbol after success")
 
         sut.display(error: "error message")
         XCTAssertEqual(sut.errorLabel.text, "error message")
-        XCTAssertEqual(sut.valueLabel.text, "a_symbol exchange rate is 100.00", "Expected value to still be shown after error")
+        XCTAssertEqual(sut.valueLabel.text, "100.00", "Expected to still see last value after failure")
+        XCTAssertEqual(sut.symbolLabel.text, "a_symbol", "Expected to still see last symbol after failure")
 
         sut.display(makeViewModel(symbol: "new_symbol", rate: 200))
         XCTAssertNil(sut.errorLabel.text, "Expected no error after success")
-        XCTAssertEqual(sut.valueLabel.text, "new_symbol exchange rate is 200.00", "Expected new value after success")
+        XCTAssertEqual(sut.valueLabel.text, "200.00", "Expected new value after success")
+        XCTAssertEqual(sut.symbolLabel.text, "new_symbol", "Expected new symbol after success")
     }
 
     // MARK: - Helpers

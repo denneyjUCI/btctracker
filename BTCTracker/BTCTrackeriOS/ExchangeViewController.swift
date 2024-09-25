@@ -33,7 +33,8 @@ public class ExchangeViewController: UIViewController {
     }
 
     public func display(_ exchange: ExchangeViewModel) {
-        valueLabel.text = exchange.message
+        valueLabel.text = exchange.price
+        symbolLabel.text = exchange.symbol
         errorLabel.text = nil
     }
 
