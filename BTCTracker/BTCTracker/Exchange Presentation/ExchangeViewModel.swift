@@ -19,4 +19,11 @@ public struct ExchangeViewModel: Equatable, Hashable {
         return exchange.symbol + " exchange rate is " + String(format: "%0.2f", exchange.rate)
     }
 
+    public var symbol: String {
+        exchange.symbol
+    }
+
+    public var price: String {
+        String(format: "%0.2f", exchange.rate)
+    }
 }
