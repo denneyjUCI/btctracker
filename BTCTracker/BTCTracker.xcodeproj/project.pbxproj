@@ -46,6 +46,7 @@
 		EAE66FD82CA45F2400CD5F56 /* ERROR_DARK.png in Resources */ = {isa = PBXBuildFile; fileRef = EAE66FD62CA45F2400CD5F56 /* ERROR_DARK.png */; };
 		EAE66FDB2CA45F7C00CD5F56 /* ERROR_AFTER_POPULATION_LIGHT.png in Resources */ = {isa = PBXBuildFile; fileRef = EAE66FD92CA45F7C00CD5F56 /* ERROR_AFTER_POPULATION_LIGHT.png */; };
 		EAE66FDC2CA45F7C00CD5F56 /* ERROR_AFTER_POPULATION_DARK.png in Resources */ = {isa = PBXBuildFile; fileRef = EAE66FDA2CA45F7C00CD5F56 /* ERROR_AFTER_POPULATION_DARK.png */; };
+		EAE66FE02CA4617900CD5F56 /* ExchangeUIComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE66FDF2CA4617900CD5F56 /* ExchangeUIComposer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +122,7 @@
 		EAE66FD62CA45F2400CD5F56 /* ERROR_DARK.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ERROR_DARK.png; sourceTree = "<group>"; };
 		EAE66FD92CA45F7C00CD5F56 /* ERROR_AFTER_POPULATION_LIGHT.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ERROR_AFTER_POPULATION_LIGHT.png; sourceTree = "<group>"; };
 		EAE66FDA2CA45F7C00CD5F56 /* ERROR_AFTER_POPULATION_DARK.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ERROR_AFTER_POPULATION_DARK.png; sourceTree = "<group>"; };
+		EAE66FDF2CA4617900CD5F56 /* ExchangeUIComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeUIComposer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -373,8 +375,9 @@
 		EAE66FDD2CA4604500CD5F56 /* Exchange UI */ = {
 			isa = PBXGroup;
 			children = (
-				EA0336442C9C870F007CDCFB /* ExchangeViewController.swift */,
-				EAE66FCF2CA4542500CD5F56 /* Exchange.storyboard */,
+				EAE66FE12CA4618500CD5F56 /* Composer */,
+				EAE66FE22CA4618B00CD5F56 /* Controller */,
+				EAE66FE32CA4619500CD5F56 /* View */,
 			);
 			path = "Exchange UI";
 			sourceTree = "<group>";
@@ -387,6 +390,30 @@
 				EAE66FCB2CA4531700CD5F56 /* snapshots */,
 			);
 			path = "Exchange UI";
+			sourceTree = "<group>";
+		};
+		EAE66FE12CA4618500CD5F56 /* Composer */ = {
+			isa = PBXGroup;
+			children = (
+				EAE66FDF2CA4617900CD5F56 /* ExchangeUIComposer.swift */,
+			);
+			path = Composer;
+			sourceTree = "<group>";
+		};
+		EAE66FE22CA4618B00CD5F56 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				EA0336442C9C870F007CDCFB /* ExchangeViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		EAE66FE32CA4619500CD5F56 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EAE66FCF2CA4542500CD5F56 /* Exchange.storyboard */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -617,6 +644,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAE66FE02CA4617900CD5F56 /* ExchangeUIComposer.swift in Sources */,
 				EA0336452C9C870F007CDCFB /* ExchangeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

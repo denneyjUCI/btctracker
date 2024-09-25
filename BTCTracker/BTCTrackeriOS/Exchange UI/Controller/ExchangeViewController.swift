@@ -8,17 +8,6 @@
 import UIKit
 import BTCTracker
 
-public enum ExchangeUIComposer {
-    public static func exchangeComposedWith(onViewLoad: @escaping () -> Void) -> ExchangeViewController {
-        let bundle = Bundle(for: ExchangeViewController.self)
-        let storyboard = UIStoryboard(name: "Exchange", bundle: bundle)
-        let vc = storyboard.instantiateInitialViewController() as! ExchangeViewController
-
-        vc.onViewLoad = onViewLoad
-        return vc
-    }
-}
-
 public class ExchangeViewController: UIViewController {
 
     @IBOutlet public private(set) var symbolLabel: UILabel!
