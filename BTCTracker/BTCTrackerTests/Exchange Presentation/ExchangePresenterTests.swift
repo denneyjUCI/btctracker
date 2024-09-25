@@ -33,7 +33,7 @@ final class ExchangePresenterTests: XCTestCase {
 
         XCTAssertEqual(view.messages, [
             .display(error: nil),
-            .display(message: "any symbol exchange rate is 300.00"),
+            .display(symbol: "any symbol", price: "300.00"),
             .display(isLoading: false)
         ])
     }
@@ -60,7 +60,7 @@ final class ExchangePresenterTests: XCTestCase {
 
         XCTAssertEqual(view.messages, [
             .display(error: nil),
-            .display(message: "any symbol exchange rate is 300.00"),
+            .display(symbol: "any symbol", price: "300.00"),
             .display(isLoading: false),
             .display(error: "Failed to update value. Showing last updated value from Sep 14, 2024 at 11:19 PM"),
         ])
@@ -90,7 +90,7 @@ final class ExchangePresenterTests: XCTestCase {
         private(set) var messages = Set<Message>()
         enum Message: Hashable {
             case display(error: String?)
-            case display(message: String)
+            case display(symbol: String, price: String)
             case display(isLoading: Bool)
         }
 
@@ -103,7 +103,7 @@ final class ExchangePresenterTests: XCTestCase {
         }
 
         func display(viewModel: ExchangeViewModel) {
-            messages.insert(.display(message: viewModel.message))
+            messages.insert(.display(symbol: viewModel.symbol, price: viewModel.price))
         }
     }
 

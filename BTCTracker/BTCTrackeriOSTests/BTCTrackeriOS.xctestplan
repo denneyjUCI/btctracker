@@ -1,0 +1,25 @@
+{
+  "configurations" : [
+    {
+      "id" : "B12024DD-B26A-48DC-9380-6D9B17D5BC94",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : false,
+    "testExecutionOrdering" : "random"
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:BTCTracker.xcodeproj",
+        "identifier" : "EAA640142C991FCB0013D594",
+        "name" : "BTCTrackeriOSTests"
+      }
+    }
+  ],
+  "version" : 1
+}
